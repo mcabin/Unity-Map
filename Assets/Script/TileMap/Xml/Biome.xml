@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Biomes[
+	<!ENTITY maxAltitude "4">
+	<!ENTITY minLandLevel "1">
+	]>
+	
+<Biomes>
+	<!--Water-->
+	<Biome>
+		<Type>Water</Type>
+		<MovementDifficulty>1.5</MovementDifficulty>
+		<MinSpawnTemperature>0</MinSpawnTemperature>
+		<MaxSpawnTemperature>9</MaxSpawnTemperature>
+		<MinSpawnAltitude>0</MinSpawnAltitude>
+		<MaxSpawnAltitude>0</MaxSpawnAltitude>
+		<MinSpawnMoisture>0</MinSpawnMoisture>
+		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+	</Biome>
+	<!--Temperate biome-->
+    <Biome>
+        <Type>GrassLand</Type>
+        <MovementDifficulty>1</MovementDifficulty>
+        <MinSpawnTemperature>3</MinSpawnTemperature>
+		<MaxSpawnTemperature>6</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+        <MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>0</MinSpawnMoisture>
+		<MaxSpawnMoisture>7</MaxSpawnMoisture>
+    </Biome>
+	<Biome>
+		<Type>Swamp</Type>
+		<MovementDifficulty>1</MovementDifficulty>
+		<MinSpawnTemperature>3</MinSpawnTemperature>
+		<MaxSpawnTemperature>6</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>8</MinSpawnMoisture>
+		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+	</Biome>
+	<!--Hot biome-->
+    <Biome>
+        <Type>Desert</Type>
+        <MovementDifficulty>1.5</MovementDifficulty>
+        <MinSpawnTemperature>7</MinSpawnTemperature>
+		<MaxSpawnTemperature>9</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+        <MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>0</MinSpawnMoisture>
+		<MaxSpawnMoisture>2</MaxSpawnMoisture>
+    </Biome>
+	<Biome>
+		<Type>Savanna</Type>
+		<MovementDifficulty>1.5</MovementDifficulty>
+		<MinSpawnTemperature>7</MinSpawnTemperature>
+		<MaxSpawnTemperature>9</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>3</MinSpawnMoisture>
+		<MaxSpawnMoisture>6</MaxSpawnMoisture>
+	</Biome>
+	<Biome>
+		<Type>Jungle</Type>
+		<MovementDifficulty>1.5</MovementDifficulty>
+		<MinSpawnTemperature>7</MinSpawnTemperature>
+		<MaxSpawnTemperature>9</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>7</MinSpawnMoisture>
+		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+	</Biome>
+	<!--Cold biome-->
+    <Biome>
+        <Type>SnowDesert</Type>
+        <MovementDifficulty>1.5</MovementDifficulty>
+        <MinSpawnTemperature>0</MinSpawnTemperature>
+		<MaxSpawnTemperature>2</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+        <MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>0</MinSpawnMoisture>
+		<MaxSpawnMoisture>4</MaxSpawnMoisture>
+    </Biome>
+	<Biome>
+		<Type>Taiga</Type>
+		<MovementDifficulty>1.5</MovementDifficulty>
+		<MinSpawnTemperature>0</MinSpawnTemperature>
+		<MaxSpawnTemperature>2</MaxSpawnTemperature>
+		<MinSpawnAltitude>&minLandLevel;</MinSpawnAltitude>
+		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
+		<MinSpawnMoisture>5</MinSpawnMoisture>
+		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+	</Biome>
+	
+</Biomes>

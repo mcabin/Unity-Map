@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Altitudes>
+    <Altitude>
+        <Type>Sea</Type>
+        <MininimumAltitude>0</MininimumAltitude>
+        <MaximumAltitude>1</MaximumAltitude>
+    </Altitude>
+    <Altitude>
+        <Type>Plain</Type>
+        <MininimumAltitude>2</MininimumAltitude>
+        <MaximumAltitude>5</MaximumAltitude>
+    </Altitude>
+    <Altitude>
+        <Type>Elevation</Type>
+        <MininimumAltitude>6</MininimumAltitude>
+        <MaximumAltitude>6</MaximumAltitude>
+    </Altitude>
+    <Altitude>
+        <Type>Plateau</Type>
+        <MininimumAltitude>7</MininimumAltitude>
+        <MaximumAltitude>8</MaximumAltitude>
+    </Altitude>
+    <Altitude>
+        <Type>Mountain</Type>
+        <MininimumAltitude>9</MininimumAltitude>
+        <MaximumAltitude>9</MaximumAltitude>
+    </Altitude>
+</Altitudes>
