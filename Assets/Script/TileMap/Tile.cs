@@ -13,7 +13,10 @@ public class Tile
     public AltitudeType altitude;
     public int movementDifficulty { get; private set; }
     
+    public Tile()
+    {
 
+    }
     public Tile(BiomeType biome,int coordX,int coordY,AltitudeType altitude)
     {
 
