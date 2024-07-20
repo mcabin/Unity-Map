@@ -157,26 +157,28 @@ MonoBehaviour:
   featureObjects:
   - {fileID: 0}
   plainTilesObject:
-  - {fileID: 7918193151861817697, guid: 98272247360368d4ba913888c4a65b74, type: 3}
-  - {fileID: 1680972710238388681, guid: 7f492b6d90155a14097a15df1df91aa2, type: 3}
-  - {fileID: 1338205352268164215, guid: c84b461fd20773a46946da950acb090c, type: 3}
-  - {fileID: 6709348732233578908, guid: f278bc275a250024288cbdab6d758257, type: 3}
-  - {fileID: 7719927756110065588, guid: 3328b14242121d840b5e89c2cd6c3434, type: 3}
-  - {fileID: 6015247767657138985, guid: b2b8d3ff10d121b43b066750d9ae0302, type: 3}
-  - {fileID: 5610258112233081778, guid: 93556b55e7ea5254ba7c9150714a64e5, type: 3}
-  - {fileID: 919132149155446097, guid: 3e2321dbeb66517488c31251ce4f50c7, type: 3}
+  - {fileID: 5364959107016604125, guid: 98272247360368d4ba913888c4a65b74, type: 3}
+  - {fileID: 2344931069509387027, guid: 7f492b6d90155a14097a15df1df91aa2, type: 3}
+  - {fileID: 6281857547504742434, guid: c84b461fd20773a46946da950acb090c, type: 3}
+  - {fileID: 8595358216851238861, guid: f278bc275a250024288cbdab6d758257, type: 3}
+  - {fileID: 8948461373098726618, guid: 3328b14242121d840b5e89c2cd6c3434, type: 3}
+  - {fileID: 4934374454568559338, guid: b2b8d3ff10d121b43b066750d9ae0302, type: 3}
+  - {fileID: 4782697937324767694, guid: 93556b55e7ea5254ba7c9150714a64e5, type: 3}
   plateauTileObjects:
-  - {fileID: 3494653271725345105, guid: 6cbba204870889647a15289c387f34cc, type: 3}
-  - {fileID: 6363029540711283445, guid: aa3b867f991c77943a46fa566e63116a, type: 3}
-  - {fileID: 5226383587117865172, guid: 6c82dfe85ef3e1e45890e98310df2164, type: 3}
-  - {fileID: 5169047458270205421, guid: dc22e0b8c15753b4a9a05b00f2455326, type: 3}
-  - {fileID: 3000410604653587474, guid: 439e9de871f18d146a9f24da31510e38, type: 3}
-  - {fileID: 4289682332823452328, guid: b32f43e774b8f7c41bd7dad4f1d69ac5, type: 3}
-  - {fileID: 2286475563812869360, guid: 9645aec88aab1c44f8eb75bad8c35e71, type: 3}
-  - {fileID: 4289682332823452328, guid: b32f43e774b8f7c41bd7dad4f1d69ac5, type: 3}
+  - {fileID: 6078294900113842925, guid: 1e8f36750f8c1cf4d8a275df2af38024, type: 3}
+  - {fileID: 7267039891464740095, guid: ad2fdcd488ee38048b9b3086a148e93a, type: 3}
+  - {fileID: 3150385524409628359, guid: 99a9773fc9e80854ea0996a9039a2d8a, type: 3}
+  - {fileID: 289009363065436452, guid: 045b76e4065a5d343ad7b9f023927635, type: 3}
+  - {fileID: 1082582842829231947, guid: 3b9f7b8e8845c9640848d7b5659faeda, type: 3}
+  - {fileID: 3514158023236379069, guid: 910f18221dc5cc148ab3c663c846890f, type: 3}
+  - {fileID: 8428070778545234494, guid: b74c971760b73b24a9e9f93712e88928, type: 3}
   waterTile: {fileID: 919132149155446097, guid: 3e2321dbeb66517488c31251ce4f50c7, type: 3}
   elevationObject:
-  - {fileID: 440382848798458925, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
+  - {fileID: 2284694900078555752, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
+  - {fileID: 5732508711312541218, guid: 009b3d8ac70e5e7438397fc2983ad057, type: 3}
+  - {fileID: 5972834033087454768, guid: 7d9fcee8650e71147ab292a8b573c267, type: 3}
+  - {fileID: 4882054819965249366, guid: ef9a0f3ade6001d4689756a8eec3f045, type: 3}
+  - {fileID: 4084185075483755309, guid: 427d5e259b92bb24ab78c83423e9bdb5, type: 3}
   elevationMaterial:
   - {fileID: 2100000, guid: 6a02630de6730834bbd0156f7c887342, type: 2}
   - {fileID: 2100000, guid: e7f480dd4ccdf74429b50d135d1d824b, type: 2}
@@ -402,64 +404,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 64.105, y: 0, z: 0}
---- !u!1001 &6499590433212488620
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512942588647467218, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2284694900078555752, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-      propertyPath: m_Name
-      value: ElevElrHu
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7685312996809571394, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -467,4 +411,3 @@ SceneRoots:
   - {fileID: 982793003}
   - {fileID: 349311845}
   - {fileID: 12327652}
-  - {fileID: 6499590433212488620}

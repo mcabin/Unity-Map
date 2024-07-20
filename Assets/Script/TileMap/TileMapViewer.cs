@@ -22,11 +22,14 @@ public class TileMapViewer : MonoBehaviour
         
     }
 
-    public void spawnElevation(int biomeId,int elevId,GameObject parent)
+    public void showElevation(int coordX,int coordY,int tileId,int elevId,int direction)
     {
-        GameObject newElev = Instantiate(elevationObject[elevId],parent.transform);
-        newElev.GetComponentInChildren<Renderer>().material = elevationMaterial[biomeId];
-        parent.transform.parent = this.gameObject.transform;
+        GameObject newTileObject = new GameObject("Tile " + coordX.ToString() + " " + coordY.ToString());
+        newTileObject.transform.position = new Vector3(coordX * tileSize, 0, coordY * tileSize);
+        GameObject newElev = Instantiate(elevationObject[elevId], newTileObject.transform);
+        newElev.GetComponentInChildren<Renderer>().material = elevationMaterial[tileId];
+        newTileObject.transform.eulerAngles=new Vector3(transform.eulerAngles.x,direction*90f,transform.eulerAngles.z);
+        ///newTileObject.transform.parent = this.gameObject.transform;
 
     }
     public void showTile(int coordX, int coordY,int tileId,int tileAltitude)
@@ -42,10 +45,6 @@ public class TileMapViewer : MonoBehaviour
         else if (tileAltitude ==1)
         {
             upObject = Instantiate(plainTilesObject[tileId], newTileObject.transform);
-        }
-        else if (tileAltitude == 2)
-        {
-            spawnElevation(tileId, 0,newTileObject);
         }
         else if (tileAltitude >2)
         {

@@ -26,8 +26,16 @@ public class TileMapController: MonoBehaviour
             for (int w = 0; w < mapWidth; w++)
             {
                 int tileId=(int)tileMap.getTile(w, h).biome.type;
-                int tileAltitude=tileMap.getTile(w, h).altitude.level;
-                tileMapView.showTile(w, h, tileId, tileAltitude);
+                AltitudeType tileAltitude=tileMap.getTile(w, h).altitude;
+                if(tileAltitude.type==TileEnum.AltitudeEnum.ELEVATION )
+                {
+                    ElevationTile elevTile=(ElevationTile)tileMap.getTile(w,h);
+                    tileMapView.showElevation(w, h,tileId,(int)elevTile.elevType,elevTile.direction);
+                }
+                else
+                {
+                    tileMapView.showTile(w, h, tileId, tileAltitude.level);
+                }
             }
         }
     }
