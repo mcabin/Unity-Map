@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c467b4f55b3ac434a80131d41cde88b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.024
+      value: -0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c467b4f55b3ac434a80131d41cde88b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c467b4f55b3ac434a80131d41cde88b9, type: 3}
       propertyPath: m_Name
-      value: ElevElrHu
+      value: ElevBasicSlope
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -79,25 +79,10 @@ public class ElevationTile : Tile
         setTileType();
     }
 
-    private bool isDuoPlateau(AltitudeType a,AltitudeType b)
-    {
-        return a.type == TileEnum.AltitudeEnum.PLATEAU && b.type == TileEnum.AltitudeEnum.PLATEAU;
-    }
-    private bool isDuoElevation(AltitudeType a,AltitudeType b)
-    {
-        return a.type == TileEnum.AltitudeEnum.ELEVATION && b.type == TileEnum.AltitudeEnum.ELEVATION;
-
-    }
-
-    private bool isDuoElevationPlateau(AltitudeType elev,AltitudeType plateau)
-    {
-        return elev.type == TileEnum.AltitudeEnum.ELEVATION && plateau.type == TileEnum.AltitudeEnum.PLATEAU;
-    }
 
     public void setTileType()
     {
-        direction = 0;
-        elevType = TileEnum.ElevEnum.ELEV_BASIC_SLOPE;
+        direction = -1;
         if (nbTotal == 0)
         {
             //Petite Colline
@@ -119,24 +104,24 @@ public class ElevationTile : Tile
                 {
                     //rotation 90 parallele aussi
                 }
-                else if(isDuoPlateau(neighboorWest, neighboorNorth))
+                else if(isDuoPlateau(neighboorNorth, neighboorEast))
                 {
                     //Direction par default
                     direction = 0;
                     elevType = TileEnum.ElevEnum.ELEV_PP_VIRAGE;
                 }
-                else if (isDuoPlateau(neighboorNorth, neighboorEast))
+                else if (isDuoPlateau(neighboorEast, neighboorSouth))
                 {
                     direction = 1;
                     elevType = TileEnum.ElevEnum.ELEV_PP_VIRAGE;
                 }
-                else if (isDuoPlateau(neighboorEast, neighboorSouth))
+                else if (isDuoPlateau(neighboorSouth, neighboorWest))
                 {
                     direction=2;
                     elevType = TileEnum.ElevEnum.ELEV_PP_VIRAGE;
 
                 }
-                else if (isDuoPlateau(neighboorSouth, neighboorWest))
+                else if (isDuoPlateau(neighboorWest, neighboorNorth))
                 {
                     direction = 3;
                     elevType = TileEnum.ElevEnum.ELEV_PP_VIRAGE;
@@ -145,33 +130,34 @@ public class ElevationTile : Tile
             //Deux elevation
             else if (nbElevation == 2)
             {
-                Debug.Log(coordX + " " + coordY+ " N " + neighboorNorth.type + " E " + neighboorEast.type + " S " + neighboorSouth.type + " W " + neighboorWest.type);
                 if (isDuoElevation(neighboorNorth, neighboorSouth))
                 {
-                    //Pas de rotation + tuile elev parallele
+                    direction = 0;
+                    elevType = TileEnum.ElevEnum.ELEV_PARA_EE;
                 }
                 else if (isDuoElevation(neighboorEast, neighboorWest))
                 {
-                    //rotation 90 parallele aussi
+                    direction = 90;
+                    elevType = TileEnum.ElevEnum.ELEV_PARA_EE;
                 }
-                else if (isDuoElevation(neighboorWest, neighboorNorth))
+                else if (isDuoElevation(neighboorNorth, neighboorEast))//neighboorWest, neighboorNorth
                 {
                     //Direction par default
                     direction = 0;
                     elevType = TileEnum.ElevEnum.ELEV_EE_VIRAGE;
                 }
-                else if (isDuoElevation(neighboorNorth, neighboorEast))
+                else if (isDuoElevation(neighboorEast, neighboorSouth))
                 {
                     direction = 1;
                     elevType = TileEnum.ElevEnum.ELEV_EE_VIRAGE;
                 }
-                else if (isDuoElevation(neighboorEast, neighboorSouth))
+                else if (isDuoElevation(neighboorSouth, neighboorWest))
                 {
                     direction = 2;
                     elevType = TileEnum.ElevEnum.ELEV_EE_VIRAGE;
 
                 }
-                else if (isDuoElevation(neighboorSouth, neighboorWest))
+                else if (isDuoElevation(neighboorWest, neighboorNorth))
                 {
                     direction = 3;
                     elevType = TileEnum.ElevEnum.ELEV_EE_VIRAGE;
@@ -246,5 +232,118 @@ public class ElevationTile : Tile
                 }
             }
         }
+        else if (nbTotal==3)
+        {
+            if(3==nbPlateau )
+            {
+                if(neighboorSouth.type==TileEnum.AltitudeEnum.PLAIN)
+                {
+                    direction=0;
+                    elevType = TileEnum.ElevEnum.ELEV_3_PLAT;
+                }
+                if (neighboorWest.type == TileEnum.AltitudeEnum.PLAIN)
+                {
+                    direction = 1;
+                    elevType = TileEnum.ElevEnum.ELEV_3_PLAT;
+                }
+                if (neighboorNorth.type == TileEnum.AltitudeEnum.PLAIN)
+                {
+                    direction = 2;
+                    elevType = TileEnum.ElevEnum.ELEV_3_PLAT;
+                }
+                if(neighboorEast.type== TileEnum.AltitudeEnum.PLAIN)
+                {
+                    direction = 3;
+                    elevType = TileEnum.ElevEnum.ELEV_3_PLAT;
+                }
+            }
+            if(nbElevation==2 && nbPlateau == 1)
+            {
+                if ( neighboorNorth.type == TileEnum.AltitudeEnum.PLATEAU)
+                {
+                    direction = 0;
+                    elevType = TileEnum.ElevEnum.ELEV_BASIC_SLOPE;
+                }
+                else if (neighboorEast.type == TileEnum.AltitudeEnum.PLATEAU)
+                {
+                    direction = 1;
+                    elevType = TileEnum.ElevEnum.ELEV_BASIC_SLOPE;
+                }
+                else if (neighboorSouth.type == TileEnum.AltitudeEnum.PLATEAU)
+                {
+                    direction = 2;
+                    elevType = TileEnum.ElevEnum.ELEV_BASIC_SLOPE;
+                }
+                else if (neighboorWest.type == TileEnum.AltitudeEnum.PLATEAU)
+                {
+                    direction = 3;
+                    elevType = TileEnum.ElevEnum.ELEV_BASIC_SLOPE;
+                }
+            }
+            else if(nbPlateau==2 && nbElevation==1) {
+                //Left
+                if(isDuoPlateau(neighboorWest,neighboorNorth) && neighboorEast.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 0;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_LEFT;
+                }
+                else if(isDuoPlateau(neighboorNorth,neighboorEast) && neighboorSouth.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 1;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_LEFT;
+                }
+                else if (isDuoPlateau(neighboorEast, neighboorSouth) && neighboorWest.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 2;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_LEFT;
+                }
+                else if (isDuoPlateau(neighboorSouth, neighboorWest) && neighboorNorth.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 3;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_LEFT;
+                }
+                //Right
+                if (isDuoPlateau(neighboorNorth, neighboorEast) && neighboorWest.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 0;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_RIGHT;
+                }
+                if (isDuoPlateau(neighboorEast, neighboorSouth) && neighboorNorth.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 1;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_RIGHT;
+                }
+                if (isDuoPlateau(neighboorSouth, neighboorWest) && neighboorEast.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 2;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_RIGHT;
+                }
+                if (isDuoPlateau(neighboorWest, neighboorNorth) && neighboorSouth.type == TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    direction = 3;
+                    elevType = TileEnum.ElevEnum.ELEV_SLOP_RIGHT;
+                }
+            }
+        }
+        if (direction == -1)
+        {
+            Debug.Log(coordX + " " + coordY + " N " + neighboorNorth.type + " E " + neighboorEast.type + " S " + neighboorSouth.type + " W " + neighboorWest.type);
+            elevType = TileEnum.ElevEnum.ERROR;
+            direction = 0;
+        }
+    }
+    private bool isDuoPlateau(AltitudeType a, AltitudeType b)
+    {
+        return a.type == TileEnum.AltitudeEnum.PLATEAU && b.type == TileEnum.AltitudeEnum.PLATEAU;
+    }
+    private bool isDuoElevation(AltitudeType a, AltitudeType b)
+    {
+        return a.type == TileEnum.AltitudeEnum.ELEVATION && b.type == TileEnum.AltitudeEnum.ELEVATION;
+
+    }
+
+    private bool isDuoElevationPlateau(AltitudeType elev, AltitudeType plateau)
+    {
+        return elev.type == TileEnum.AltitudeEnum.ELEVATION && plateau.type == TileEnum.AltitudeEnum.PLATEAU;
     }
 }

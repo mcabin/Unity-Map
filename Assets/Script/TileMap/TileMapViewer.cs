@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class TileMapViewer : MonoBehaviour
 {
-    public int mapWidth = 100;
-    public int mapHeight = 100;
     public GameObject[] featureObjects;
     public GameObject[] plainTilesObject;
     public GameObject[] plateauTileObjects;
@@ -29,7 +27,7 @@ public class TileMapViewer : MonoBehaviour
         GameObject newElev = Instantiate(elevationObject[elevId], newTileObject.transform);
         newElev.GetComponentInChildren<Renderer>().material = elevationMaterial[tileId];
         newTileObject.transform.eulerAngles=new Vector3(transform.eulerAngles.x,direction*90f,transform.eulerAngles.z);
-        ///newTileObject.transform.parent = this.gameObject.transform;
+        newTileObject.transform.parent = this.gameObject.transform;
 
     }
     public void showTile(int coordX, int coordY,int tileId,int tileAltitude)

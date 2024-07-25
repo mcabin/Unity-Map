@@ -152,18 +152,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b472aeb351b22e14480eb887303d8d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidth: 50
-  mapHeight: 50
   featureObjects:
   - {fileID: 0}
   plainTilesObject:
-  - {fileID: 5364959107016604125, guid: 98272247360368d4ba913888c4a65b74, type: 3}
-  - {fileID: 2344931069509387027, guid: 7f492b6d90155a14097a15df1df91aa2, type: 3}
-  - {fileID: 6281857547504742434, guid: c84b461fd20773a46946da950acb090c, type: 3}
-  - {fileID: 8595358216851238861, guid: f278bc275a250024288cbdab6d758257, type: 3}
-  - {fileID: 8948461373098726618, guid: 3328b14242121d840b5e89c2cd6c3434, type: 3}
-  - {fileID: 4934374454568559338, guid: b2b8d3ff10d121b43b066750d9ae0302, type: 3}
-  - {fileID: 4782697937324767694, guid: 93556b55e7ea5254ba7c9150714a64e5, type: 3}
+  - {fileID: 5911874361210436119, guid: 98272247360368d4ba913888c4a65b74, type: 3}
+  - {fileID: 873848703276323575, guid: 7f492b6d90155a14097a15df1df91aa2, type: 3}
+  - {fileID: 6582476507756949021, guid: c84b461fd20773a46946da950acb090c, type: 3}
+  - {fileID: 8341519275075792346, guid: f278bc275a250024288cbdab6d758257, type: 3}
+  - {fileID: 3263341228859670921, guid: 3328b14242121d840b5e89c2cd6c3434, type: 3}
+  - {fileID: 5116874591366504486, guid: b2b8d3ff10d121b43b066750d9ae0302, type: 3}
+  - {fileID: 1353953473035372741, guid: 93556b55e7ea5254ba7c9150714a64e5, type: 3}
   plateauTileObjects:
   - {fileID: 6078294900113842925, guid: 1e8f36750f8c1cf4d8a275df2af38024, type: 3}
   - {fileID: 7267039891464740095, guid: ad2fdcd488ee38048b9b3086a148e93a, type: 3}
@@ -175,10 +173,13 @@ MonoBehaviour:
   waterTile: {fileID: 919132149155446097, guid: 3e2321dbeb66517488c31251ce4f50c7, type: 3}
   elevationObject:
   - {fileID: 2284694900078555752, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
+  - {fileID: 3255616423147119323, guid: 196af35e6f10f33419b73e0e37878b4f, type: 3}
+  - {fileID: 7249324078104514668, guid: c4da2046acc1cd94c98c2fea94f6438e, type: 3}
   - {fileID: 5732508711312541218, guid: 009b3d8ac70e5e7438397fc2983ad057, type: 3}
   - {fileID: 5972834033087454768, guid: 7d9fcee8650e71147ab292a8b573c267, type: 3}
   - {fileID: 4882054819965249366, guid: ef9a0f3ade6001d4689756a8eec3f045, type: 3}
   - {fileID: 4084185075483755309, guid: 427d5e259b92bb24ab78c83423e9bdb5, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
   elevationMaterial:
   - {fileID: 2100000, guid: 6a02630de6730834bbd0156f7c887342, type: 2}
   - {fileID: 2100000, guid: e7f480dd4ccdf74429b50d135d1d824b, type: 2}
@@ -218,6 +219,10 @@ MonoBehaviour:
   tileMapView: {fileID: 0}
   mapHeight: 50
   mapWidth: 50
+  seed: 0
+  altitudeScale: 10
+  temperatureModifier: 1
+  moistureModifier: 1
 --- !u!1 &349311843
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 982793000}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5419501, y: 0, z: 0, w: 0.84041065}
-  m_LocalPosition: {x: 191.9, y: 157.9, z: 230.2}
+  m_LocalPosition: {x: 51.66, y: 30.01, z: 27.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

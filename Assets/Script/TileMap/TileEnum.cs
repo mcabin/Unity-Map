@@ -21,10 +21,17 @@ public static class TileEnum
     public enum ElevEnum
     {
         ELEV_BASIC_SLOPE= 0,
-        ELEV_EE_VIRAGE= 1,
-        ELEV_EP_VIRAGE=2,
-        ELEV_PE_VIRAGE = 3,
-        ELEV_PP_VIRAGE = 4
+        ELEV_SLOP_RIGHT = 1,
+        ELEV_SLOP_LEFT = 2,
+        ELEV_EE_VIRAGE = 3,
+        ELEV_EP_VIRAGE=4,
+        ELEV_PE_VIRAGE = 5,
+        ELEV_PP_VIRAGE = 6,
+        ELEV_3_PLAT= 7,
+        ELEV_NO_NEIGHBOOR= 8,
+        ELEV_PARA_EE=9,
+        ERROR=10
+   
     }
     public enum BiomeEnum
     {
@@ -35,6 +42,6 @@ public static class TileEnum
         JUNGLE= 4,
         SNOWDESERT = 5,
         TAIGA= 6,
-        WATER=7
+        WATER=7,
     }
 }

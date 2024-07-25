@@ -9,9 +9,13 @@ public class TileMapController: MonoBehaviour
     public TileMapViewer tileMapView;
     public int mapHeight;
     public int mapWidth;
+    public int seed;
+    public float altitudeScale;
+    public float temperatureModifier;
+    public float moistureModifier;
     void Start()
     {
-        tileMap = new TileMapModel(mapHeight, mapWidth);
+        tileMap = new TileMapModel(mapHeight, mapWidth,seed,altitudeScale,temperatureModifier,moistureModifier);
         tileMapView=GetComponent<TileMapViewer>();
         updateView();
     }

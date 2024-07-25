@@ -3,26 +3,26 @@
     <Altitude>
         <Type>Sea</Type>
         <MininimumAltitude>0</MininimumAltitude>
-        <MaximumAltitude>1</MaximumAltitude>
+        <MaximumAltitude>19</MaximumAltitude>
     </Altitude>
     <Altitude>
         <Type>Plain</Type>
-        <MininimumAltitude>2</MininimumAltitude>
-        <MaximumAltitude>5</MaximumAltitude>
+        <MininimumAltitude>20</MininimumAltitude>
+        <MaximumAltitude>59</MaximumAltitude>
     </Altitude>
     <Altitude>
         <Type>Elevation</Type>
-        <MininimumAltitude>6</MininimumAltitude>
-        <MaximumAltitude>6</MaximumAltitude>
+        <MininimumAltitude>60</MininimumAltitude>
+        <MaximumAltitude>63</MaximumAltitude>
     </Altitude>
     <Altitude>
         <Type>Plateau</Type>
-        <MininimumAltitude>7</MininimumAltitude>
-        <MaximumAltitude>8</MaximumAltitude>
+        <MininimumAltitude>64</MininimumAltitude>
+        <MaximumAltitude>89</MaximumAltitude>
     </Altitude>
     <Altitude>
         <Type>Mountain</Type>
-        <MininimumAltitude>9</MininimumAltitude>
-        <MaximumAltitude>9</MaximumAltitude>
+        <MininimumAltitude>90</MininimumAltitude>
+        <MaximumAltitude>100</MaximumAltitude>
     </Altitude>
 </Altitudes>

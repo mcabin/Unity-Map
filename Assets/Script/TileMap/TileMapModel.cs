@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using static TileAsset;
 using static TileEnum;
@@ -8,28 +7,28 @@ using static TileEnum;
 public class TileMapModel
 {
     //Temperature
-    public float temperatureNoiseScale = 5f;
-    public float temperatureOffsetX = 1f;
-    public float temperatureOffsetY = 10f;
-    public int minTemperature = 0;
-    public int maxTemperature = 9;
-    public float noiseInfluenceTemperature = 5f;
-    public float temperatureModifier = 1f;
+    private float temperatureNoiseScale = 5f;
+    private float temperatureOffsetX ;
+    private float temperatureOffsetY ;
+    private const int minTemperature = 0;
+    private const int maxTemperature = 9;
+    private float noiseInfluenceTemperature = 5f;
+    private float temperatureModifier;
 
     //Altitude noise
-    public float altitudeNoiseScale = 3f;
-    public float altitudeOffsetX=10;
-    public float altitudeOffsetY=90;
-    public int maxAltitude=9;
+    private float altitudeNoiseScale ;
+    private float altitudeOffsetX;
+    private float altitudeOffsetY;
+    private const int maxAltitude =99;
 
     //Moisture
-    public int minMoisture=0;
-    public int maxMoisture=9;
-    public float moistureNoiseScale = 5f;
-    public float moistureOffsetX = 1f;
-    public float moistureOffsetY = 10f;
-    public float noiseInfluenceMoisture =3f;
-    public float moistureModifier = 1f;
+    private const int minMoisture=0;
+    private const int maxMoisture=9;
+    private float moistureNoiseScale = 5f;
+    private float moistureOffsetX;
+    private float moistureOffsetY;
+    private float noiseInfluenceMoisture =3f;
+    private float moistureModifier;
 
 
     public int height { get; private set; }
@@ -37,10 +36,24 @@ public class TileMapModel
     private Tile[,] tiles;
 
     //Constructor
-    public TileMapModel(int height, int width)
+    public TileMapModel(int height, int width,int seed,float altitudeScale,float temperatureModifier,float moistureModifier)
     {
         this.height = height;
         this.width = width;
+        //Seed
+        altitudeNoiseScale=altitudeScale;
+         this.temperatureModifier=temperatureModifier;
+        this.moistureModifier= moistureModifier;
+        System.Random rnd =new System.Random(seed);
+        int maxOffset=height*width;
+
+        this.temperatureOffsetX = rnd.Next(maxOffset);
+        this.temperatureOffsetY = rnd.Next(maxOffset);
+        this.altitudeOffsetX = rnd.Next(maxOffset);
+        this.altitudeOffsetY = rnd.Next(maxOffset);
+        this.moistureOffsetX = rnd.Next(maxOffset);
+        this.moistureOffsetY = rnd.Next(maxOffset);
+
         generateTilesMap();
     }
 
@@ -224,20 +237,21 @@ public class TileMapModel
                     else
                         south= TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
 
-                    AltitudeType west;
-                    if (w > 0)
-                        west = altitudes[h, w-1];
-                    else
-                        west = TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
-
                     AltitudeType east;
-                    if (w < width - 1)
-                        east = altitudes[h, w+1];
+                    if (w > 0)
+                        east = altitudes[h, w-1];
                     else
                         east = TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
+
+                    AltitudeType west;
+                    if (w < width - 1)
+                        west = altitudes[h, w+1];
+                    else
+                        west = TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
                     if(west.level>=(int)TileEnum.AltitudeEnum.ELEVATION && east.level >= (int)TileEnum.AltitudeEnum.ELEVATION && south.level >= (int)TileEnum.AltitudeEnum.ELEVATION && north.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
                     {
                         altitude= TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLATEAU);
+                        altitudes[h, w] = altitude;
                         tiles[h, w] = new Tile(biome, w, h, altitude);
                         //Change la valeur des voisins déja initialisé si le voisin est une élévation
                         //Voisin du haut
@@ -252,11 +266,11 @@ public class TileMapModel
                         //Voisin de gauche
                         if (w > 0)
                         {
-                            Tile westNeighboor = tiles[h, w-1];
-                            if(westNeighboor.altitude.type== TileEnum.AltitudeEnum.ELEVATION)
+                            Tile eastNeighboor = tiles[h, w-1];
+                            if(eastNeighboor.altitude.type== TileEnum.AltitudeEnum.ELEVATION)
                             {
-                                ElevationTile westElevation=(ElevationTile)westNeighboor;
-                                westElevation.setEast(altitude);
+                                ElevationTile eastElevation=(ElevationTile)eastNeighboor;
+                                eastElevation.setWest(altitude);
                             }
                         }
 
