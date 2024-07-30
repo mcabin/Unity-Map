@@ -15,22 +15,22 @@ public static class TileEnum
         SEA= 0,
         PLAIN= 1,
         ELEVATION=2,
-        PLATEAU= 3,
-        MOUNTAIN= 4
+        MOUNTAIN= 3
     }
     public enum ElevEnum
     {
-        ELEV_BASIC_SLOPE= 0,
-        ELEV_SLOP_RIGHT = 1,
-        ELEV_SLOP_LEFT = 2,
-        ELEV_EE_VIRAGE = 3,
-        ELEV_EP_VIRAGE=4,
-        ELEV_PE_VIRAGE = 5,
-        ELEV_PP_VIRAGE = 6,
-        ELEV_3_PLAT= 7,
-        ELEV_NO_NEIGHBOOR= 8,
-        ELEV_PARA_EE=9,
-        ERROR=10
+        ELEV_PPP = 0,
+        ELEV_EPP = 1,
+        ELEV_PPE = 2,
+        ELEV_ONE = 3,
+        ELEV_CURVE_EE= 4,
+        ELEV_CURVE_EP=5,
+        ELEV_CURVE_PE = 6,
+        ELEV_CURVE_PP = 7,
+        ELEV_3_PLAT= 8,
+        PLAIN=9,
+        PLATEAU= 10,
+        ALL=11
    
     }
     public enum BiomeEnum

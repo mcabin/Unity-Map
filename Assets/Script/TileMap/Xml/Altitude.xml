@@ -13,11 +13,6 @@
     <Altitude>
         <Type>Elevation</Type>
         <MininimumAltitude>60</MininimumAltitude>
-        <MaximumAltitude>63</MaximumAltitude>
-    </Altitude>
-    <Altitude>
-        <Type>Plateau</Type>
-        <MininimumAltitude>64</MininimumAltitude>
         <MaximumAltitude>89</MaximumAltitude>
     </Altitude>
     <Altitude>

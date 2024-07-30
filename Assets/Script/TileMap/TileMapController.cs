@@ -33,7 +33,7 @@ public class TileMapController: MonoBehaviour
                 AltitudeType tileAltitude=tileMap.getTile(w, h).altitude;
                 if(tileAltitude.type==TileEnum.AltitudeEnum.ELEVATION )
                 {
-                    ElevationTile elevTile=(ElevationTile)tileMap.getTile(w,h);
+                    TileElevation elevTile=(TileElevation)tileMap.getTile(w,h);
                     tileMapView.showElevation(w, h,tileId,(int)elevTile.elevType,elevTile.direction);
                 }
                 else

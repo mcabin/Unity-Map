@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Xml;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using static TileEnum;
 
 public static class TileAsset
 {
@@ -16,6 +19,8 @@ public static class TileAsset
     private readonly static TileFeature[] featureTypes;
     private readonly static int featureNumber;
 
+    private readonly static ElevationType[] elevationTypes;
+    private readonly static int elevationNumber;
     static TileAsset()
     {
         //ALTITUDE
@@ -30,6 +35,11 @@ public static class TileAsset
         featureNumber = 2;
         featureTypes = new TileFeature[featureNumber];
         initialiseFeatureTypes();
+
+        //
+        elevationNumber = Enum.GetNames(typeof(TileEnum.ElevEnum)).Length;
+        elevationTypes = new ElevationType[elevationNumber];
+        intitialiseElevationType();
     }
     private static string getPathXml(string pathName)
     {
@@ -82,7 +92,7 @@ public static class TileAsset
         foreach (XmlNode altitudeXml in altitudesXml)
         {
             string typeStr = altitudeXml.SelectSingleNode("Type")?.InnerText;
-            if (Enum.TryParse<TileEnum.AltitudeEnum>(typeStr, true, out TileEnum.AltitudeEnum altitudeEnum))
+            if (Enum.TryParse(typeStr, true, out TileEnum.AltitudeEnum altitudeEnum))
             {
                 if (int.TryParse(altitudeXml.SelectSingleNode("MininimumAltitude")?.InnerText, out int minAltitude) &&
                     int.TryParse(altitudeXml.SelectSingleNode("MaximumAltitude")?.InnerText, out int maxAltitude))
@@ -98,7 +108,98 @@ public static class TileAsset
             else throw new Exception("Enum doesn't exist for " + typeStr);
         }
     }
+    //ELEVATION
 
+    private static ElevationStruct parseOneElevStruc(XmlNode elevationXml)
+    {
+
+            string typeStr = elevationXml.SelectSingleNode("Type")?.InnerText;
+            if (Enum.TryParse(typeStr, true, out TileEnum.ElevEnum elevEnum))
+            {
+                if (int.TryParse(elevationXml.SelectSingleNode("Rotation")?.InnerText, out int rotation))
+                {
+                    ElevationStruct newElevation = new ElevationStruct();
+                    newElevation.rotation = rotation;
+                    newElevation.enumElev = elevEnum;
+                    return newElevation;
+                }
+                else
+                {
+                    throw new Exception($"Invalid numeric value in XML for elevation {elevEnum}");
+                }
+            }
+            else throw new Exception("Enum doesn't exist for " + typeStr);        
+    }
+    private static void intitialiseElevationType()
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(getPathXml("Elevation.xml"));
+        XmlNodeList elevationsXml = xmlDoc.SelectNodes("//Elevation");
+        foreach (XmlNode elevationXml in elevationsXml)
+        {
+            XmlNode elev = elevationXml.SelectSingleNode("Elev");
+            if (elev != null)
+            {
+                ElevationStruct mainElev = parseOneElevStruc(elevationXml);
+
+                //North
+                List<ElevationStruct> northElevNeighboorsStructs=new List<ElevationStruct>();
+                XmlNode northNeighboors = elevationXml.SelectSingleNode("NorthNeighboors");
+                if (northNeighboors != null)
+                {
+                    XmlNodeList listNorthNeighboors = northNeighboors.SelectNodes("Elev");
+                    foreach (XmlNode neighboor in listNorthNeighboors)
+                    {
+                        northElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                    }
+                }
+                else throw new Exception("No north found");
+
+                //South
+                List<ElevationStruct> southElevNeighboorsStructs = new List<ElevationStruct>();
+                XmlNode southNeighboors = elevationXml.SelectSingleNode("SouthNeighboors");
+                if (southNeighboors != null)
+                {
+                    XmlNodeList listSouthNeighboors = southNeighboors.SelectNodes("Elev");
+                    foreach (XmlNode neighboor in listSouthNeighboors)
+                    {
+                        southElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                    }
+                }
+                else throw new Exception("No south found");
+
+                //west
+                List<ElevationStruct> westElevNeighboorsStructs = new List<ElevationStruct>();
+                XmlNode westNeighboors = elevationXml.SelectSingleNode("WestNeighboors");
+                if (westNeighboors != null)
+                {
+                    XmlNodeList listWestNeighboors = westNeighboors.SelectNodes("Elev");
+                    foreach (XmlNode neighboor in listWestNeighboors)
+                    {
+                        westElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                    }
+                }
+                else throw new Exception("No west found");
+
+                //east
+                List<ElevationStruct> eastElevNeighboorsStructs = new List<ElevationStruct>();
+                XmlNode eastNeighboors = elevationXml.SelectSingleNode("EastNeighboors");
+                if (eastNeighboors != null)
+                {
+                    XmlNodeList listEastNeighboors = eastNeighboors.SelectNodes("Elev");
+                    foreach (XmlNode neighboor in listEastNeighboors)
+                    {
+                        eastElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                    }
+                }
+                else throw new Exception("No east found");
+                elevationTypes[(int)mainElev.enumElev] = new ElevationType(mainElev,northElevNeighboorsStructs,eastElevNeighboorsStructs,southElevNeighboorsStructs,westElevNeighboorsStructs);
+            }
+            else throw new Exception("No elev found");
+            
+           
+        }
+    }
     //FEATURE
     private static void initialiseFeatureTypes()
     {
@@ -122,5 +223,10 @@ public static class TileAsset
     public static BiomeType getBiomeType(TileEnum.BiomeEnum key)
     {
         return biomeTypes[(int)key];
+    }
+
+    public static ElevationType getElevationType(TileEnum.ElevEnum key)
+    {
+        return elevationTypes[(int)key];
     }
 }

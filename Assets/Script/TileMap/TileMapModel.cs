@@ -134,7 +134,7 @@ public class TileMapModel
         return Mathf.Lerp(maxMoisture, minMoisture, distance* waterPercentage);
     }
 
-    private int tileMoisture(int x, int y, List<(int, int)> waterTiles)
+    private int tileMoisture(int h, int w, List<(int, int)> waterTiles)
     {
         // Si aucune tuile d'eau n'existe, retourner 0 (pas d'humidité)
         if (waterTiles.Count == 0)
@@ -148,8 +148,9 @@ public class TileMapModel
         // Parcourir toutes les tuiles d'eau pour trouver la plus proche
         foreach ((int, int) waterTile in waterTiles)
         {
+
             // Calculer la distance normalisée entre la tuile actuelle et la tuile d'eau
-            float distance = CalculateDistanceNormalized(x, y, waterTile.Item1, waterTile.Item2);
+            float distance = CalculateDistanceNormalized(h, w, waterTile.Item1, waterTile.Item2);
             minDistance = Math.Min(minDistance, distance);
         }
         /* Calculer l'humidité de base en fonction de la distance à l'eau la plus proche
@@ -157,8 +158,8 @@ public class TileMapModel
         float baseMoisture = Math.Clamp(CalculateHumidity(minDistance, (width * height) / waterTiles.Count), minMoisture, maxMoisture);
 
         // Ajouter des variations locales avec du bruit de Perlin
-        float xCoord = (float)x / width * moistureNoiseScale + moistureOffsetX;
-        float yCoord = (float)y / height * moistureNoiseScale + moistureOffsetY;
+        float xCoord = (float)w / width * moistureNoiseScale + moistureOffsetX;
+        float yCoord = (float)h / height * moistureNoiseScale + moistureOffsetY;
         // Générer un bruit entre -1 et 1
         float noise = Mathf.PerlinNoise(xCoord, yCoord) * 2f - 1f * moistureModifier;
 
@@ -181,6 +182,8 @@ public class TileMapModel
         // Création de tableaux pour stocker les altitudes et températures
         AltitudeType[,] altitudes = new AltitudeType[height, width];
         int[,] temperatures = new int[height, width];
+        List<(int, int)> elevationTilesCoord = new List<(int, int)>();
+        List<(int, int)> plainTilesCoord = new List<(int, int)>();
 
         // Liste pour garder une trace des tuiles d'eau
         List<(int, int)> waterTiles = new List<(int, int)>();
@@ -192,102 +195,66 @@ public class TileMapModel
             {
 
                 AltitudeType altitude = altitudeNoise(w, h);
+                if (altitude.level >= (int)AltitudeEnum.ELEVATION)
+                    elevationTilesCoord.Add((h, w));
+                else
+                    plainTilesCoord.Add((h, w)); 
                 temperatures[h, w] = tileTemperature(w, h);
 
 
                 // Si l'altitude est inférieure ou égale au niveau d'eau, c'est une tuile d'eau
                 if (altitude.type ==TileEnum.AltitudeEnum.SEA)
                 {
-                    waterTiles.Add((w, h));                
+                    waterTiles.Add((h, w));                
                 }
                 altitudes[h, w] = altitude;
             }
         }
 
         // Deuxième boucle : génération de l'humidité et détermination du biome
-        for (int h = 0; h < height; h++)
+        foreach(var coord in elevationTilesCoord)
         {
-            for (int w = 0; w < width; w++)
+            int h = coord.Item1;
+            int w = coord.Item2;
+            int moisture=tileMoisture(h, w, waterTiles);
+             
+            BiomeType biome = retrieveBiomeType(temperatures[h, w], altitudes[h,w],moisture);
+            bool isBorder = false;
+            AltitudeType altiNorth;
+            if (h > 0)
+                altiNorth = altitudes[h - 1, w];
+            else
+                altiNorth= altitudes[h, w];
+            if (altiNorth.type == AltitudeEnum.PLAIN)
+                isBorder = true;
+            AltitudeType altiEast;
+            if (w<width-1)
+                altiEast = altitudes[h, w+1];
+            else
+                altiEast = altitudes[h, w];
+            if (altiEast.type == AltitudeEnum.PLAIN)
+                isBorder = true;
+            AltitudeType altiSouth;
+            if (h < height - 1)
+                altiSouth = altitudes[h + 1, w];
+            else
+                altiSouth = altitudes[h, w];
+
+            if(altiSouth.type==AltitudeEnum.PLAIN)
+                isBorder = true;
+            AltitudeType altiWest;
+            if (w > 0)
+                altiWest = altitudes[h, w - 1];
+            else
+                altiWest = altitudes[h, w];
+            if (altiWest.type == AltitudeEnum.PLAIN)
+                isBorder = true;
+            TileElevation elevTile = new TileElevation(biome, w, h, altitudes[h, w]);
+            if (!isBorder)
             {
-                // Calcul de l'humidité pour cette tuile
-                int moisture = tileMoisture(w, h, waterTiles);
-                AltitudeType altitude = altitudes[h, w];
-                
-
-                BiomeType biome;
-                // on détermine le biome en fonction de la température, de l'altitude et de l'humidité
-                biome = retrieveBiomeType(temperatures[h, w], altitude, moisture);
-
-                // Vérification que le biome a bien été déterminé
-                if (biome == null)
-                {
-                    throw new Exception("Biome for " + w + " " + h + " with temperature of :" + temperatures[w, h] + " and altitude of " + altitude + " is null");
-                }
-                if (altitude.type == TileEnum.AltitudeEnum.ELEVATION)
-                {
-                    AltitudeType north;
-                    if (h > 0)
-                         north = altitudes[h-1,w];
-                    else
-                        north = TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
-
-                    AltitudeType south;
-                    if(h<height-1)
-                        south=altitudes[h + 1,w];
-                    else
-                        south= TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
-
-                    AltitudeType east;
-                    if (w > 0)
-                        east = altitudes[h, w-1];
-                    else
-                        east = TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
-
-                    AltitudeType west;
-                    if (w < width - 1)
-                        west = altitudes[h, w+1];
-                    else
-                        west = TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLAIN);
-                    if(west.level>=(int)TileEnum.AltitudeEnum.ELEVATION && east.level >= (int)TileEnum.AltitudeEnum.ELEVATION && south.level >= (int)TileEnum.AltitudeEnum.ELEVATION && north.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
-                    {
-                        altitude= TileAsset.GetAltitudeType(TileEnum.AltitudeEnum.PLATEAU);
-                        altitudes[h, w] = altitude;
-                        tiles[h, w] = new Tile(biome, w, h, altitude);
-                        //Change la valeur des voisins déja initialisé si le voisin est une élévation
-                        //Voisin du haut
-                        if (h > 0){
-                            Tile northNeighboor = tiles[h-1,w];
-                            if (northNeighboor.altitude.type == TileEnum.AltitudeEnum.ELEVATION)
-                            {
-                                ElevationTile northElevation = (ElevationTile)northNeighboor;
-                                northElevation.setSouth(altitude);
-                            }
-                        }
-                        //Voisin de gauche
-                        if (w > 0)
-                        {
-                            Tile eastNeighboor = tiles[h, w-1];
-                            if(eastNeighboor.altitude.type== TileEnum.AltitudeEnum.ELEVATION)
-                            {
-                                ElevationTile eastElevation=(ElevationTile)eastNeighboor;
-                                eastElevation.setWest(altitude);
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        ElevationTile elev = new ElevationTile(biome, w, h, altitude);
-                        elev.setNeighboors(north, south, west,east);
-                        tiles[h, w] = elev;
-                    }
-                }
-                else
-                {
-                    // Création de la tuile avec les informations générées
-                    tiles[h, w] = new Tile(biome, w, h, altitude);
-                }
+                elevTile.setElevationType(ElevEnum.PLATEAU);
             }
+
         }
     }
     public TileNode[,] createListOfTileNode()
@@ -320,6 +287,7 @@ public class TileMapModel
                     tilesNodes[h, w].addNeighbor(tilesNodes[h, w - 1]);
                     tilesNodes[h , w - 1].addNeighbor(tilesNodes[h, w]);
                 }
+
             }
         }
         return tilesNodes;
