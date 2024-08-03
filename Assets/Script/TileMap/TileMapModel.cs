@@ -173,7 +173,7 @@ public class TileMapModel
         return (int)Math.Round(moisture);
     }
 
-    //Création de la tile Map Stockage du resultat dans le paramétre tiles
+    //Création de la tileWest Map Stockage du resultat dans le paramétre tiles
     private void generateTilesMap()
     {
         // Initialisation du tableau de tuiles avec les dimensions spécifiées
@@ -184,6 +184,8 @@ public class TileMapModel
         int[,] temperatures = new int[height, width];
         List<(int, int)> elevationTilesCoord = new List<(int, int)>();
         List<(int, int)> plainTilesCoord = new List<(int, int)>();
+        List<(int, int)> borderTilesCoord = new List<(int, int)>();
+
 
         // Liste pour garder une trace des tuiles d'eau
         List<(int, int)> waterTiles = new List<(int, int)>();
@@ -253,8 +255,145 @@ public class TileMapModel
             if (!isBorder)
             {
                 elevTile.setElevationType(ElevEnum.PLATEAU);
-            }
+                if (w > 0)
+                {
+                    Tile tileWest = tiles[h, w - 1];
+                    TileElevation elevWest = (TileElevation)tileWest;
+                    elevWest.eastNeighboor= TileAsset.getElevationType(ElevEnum.PLATEAU);
+                    elevTile.westNeighboor = elevWest.elevationType;
+                }
+                if (h > 0)
+                {
+                    Tile tileNorth = tiles[h-1, w ];
+                    TileElevation elevNorth = (TileElevation)tileNorth;
+                    elevNorth.southNeighboor = TileAsset.getElevationType(ElevEnum.PLATEAU);
+                    elevTile.northNeighboor = elevNorth.elevationType;
 
+                }
+
+            }
+            else
+            {
+                
+                if (altiNorth.level <= (int)AltitudeEnum.PLAIN)
+                {
+                   elevTile.northNeighboor = TileAsset.getElevationType(ElevEnum.PLAIN);
+                }
+                else if (h > 0)
+                {
+                    
+                        Tile tileNorth = tiles[h - 1, w];
+                        TileElevation elevNorth = (TileElevation)tileNorth;
+                        if (elevNorth.elevationType != null)
+                        {
+                        elevTile.northNeighboor = elevNorth.elevationType;
+                        }
+                        else
+                        {
+                         elevTile.northNeighboor = TileAsset.getElevationType(ElevEnum.ELEV_TEMP);
+                         }
+                }
+                else
+                {
+                    elevTile.northNeighboor = TileAsset.getElevationType(ElevEnum.ELEV_TEMP);
+                }
+
+                if (altiEast.level <= (int)AltitudeEnum.PLAIN)
+                {
+                    elevTile.eastNeighboor = TileAsset.getElevationType(ElevEnum.PLAIN);
+                }
+                else
+                {
+                    elevTile.eastNeighboor = TileAsset.getElevationType(ElevEnum.ELEV_TEMP);
+                }
+
+                if (altiSouth.level <= (int)AltitudeEnum.PLAIN) {
+                    elevTile.southNeighboor = TileAsset.getElevationType(ElevEnum.PLAIN);
+
+                }
+                else
+                {
+                    elevTile.southNeighboor = TileAsset.getElevationType(ElevEnum.ELEV_TEMP);
+                }
+
+                if (altiWest.level <= (int)AltitudeEnum.PLAIN)
+                {
+                    elevTile.westNeighboor = TileAsset.getElevationType(ElevEnum.PLAIN);
+                }
+                else if (w > 0)
+                {
+                    Tile tileWest = tiles[h, w - 1];
+                    TileElevation elevWest = (TileElevation)tileWest;
+                    if (elevWest.elevationType != null)
+                    {
+                        elevTile.westNeighboor = elevWest.elevationType;
+                    }
+                    else
+                    {
+                        elevTile.westNeighboor= TileAsset.getElevationType(ElevEnum.ELEV_TEMP);
+                    }
+                }
+                else
+                {
+                    elevTile.northNeighboor = TileAsset.getElevationType(ElevEnum.ELEV_TEMP);
+                }
+                borderTilesCoord.Add(coord);
+            }
+            tiles[h, w] = elevTile;
+
+        }
+        foreach (var coord in plainTilesCoord)
+        {
+            int h = coord.Item1;
+            int w = coord.Item2;
+            int moisture = tileMoisture(h, w, waterTiles);
+
+            BiomeType biome = retrieveBiomeType(temperatures[h, w], altitudes[h, w], moisture);
+            Tile elevTile = new Tile(biome, w, h, altitudes[h, w]);
+            tiles[h, w] = elevTile;
+            
+        }
+        foreach(var coord in borderTilesCoord) {
+            int h = coord.Item1;
+            int w = coord.Item2;
+            TileElevation elev = (TileElevation)tiles[h, w];
+            elev.setTypeWithNeighboor();
+            if (h > 0)
+            {
+                Tile currentTile = tiles[h - 1, w];
+                if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    TileElevation currentTileElevation = (TileElevation)currentTile;
+                    currentTileElevation.southNeighboor = elev.elevationType;
+                }
+            }
+            if (w > 0)
+            {
+                Tile currentTile = tiles[h , w -1];
+                if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    TileElevation currentTileElevation = (TileElevation)currentTile;
+                    currentTileElevation.eastNeighboor = elev.elevationType;
+                }
+            }
+            if (w < width - 1)
+            {
+                Tile currentTile = tiles[h, w + 1];
+                if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    TileElevation currentTileElevation = (TileElevation)currentTile;
+                    currentTileElevation.westNeighboor = elev.elevationType;
+                }
+            }
+            if (h < height - 1)
+            {
+                Tile currentTile = tiles[h+1, w];
+                if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
+                {
+                    TileElevation currentTileElevation = (TileElevation)currentTile;
+                    currentTileElevation.northNeighboor = elev.elevationType;
+                }
+            }
         }
     }
     public TileNode[,] createListOfTileNode()

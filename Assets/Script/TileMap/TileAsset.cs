@@ -112,7 +112,7 @@ public static class TileAsset
 
     private static ElevationStruct parseOneElevStruc(XmlNode elevationXml)
     {
-
+            
             string typeStr = elevationXml.SelectSingleNode("Type")?.InnerText;
             if (Enum.TryParse(typeStr, true, out TileEnum.ElevEnum elevEnum))
             {
@@ -140,7 +140,7 @@ public static class TileAsset
             XmlNode elev = elevationXml.SelectSingleNode("Elev");
             if (elev != null)
             {
-                ElevationStruct mainElev = parseOneElevStruc(elevationXml);
+                ElevationStruct mainElev = parseOneElevStruc(elev);
 
                 //North
                 List<ElevationStruct> northElevNeighboorsStructs=new List<ElevationStruct>();

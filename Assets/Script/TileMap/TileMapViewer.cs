@@ -20,13 +20,13 @@ public class TileMapViewer : MonoBehaviour
         
     }
 
-    public void showElevation(int coordX,int coordY,int tileId,int elevId,int direction)
+    public void showElevation(int coordX,int coordY,int tileId,int elevId,int rotation)
     {
         GameObject newTileObject = new GameObject("Tile " + coordX.ToString() + " " + coordY.ToString());
         newTileObject.transform.position = new Vector3(coordX * tileSize, 0, coordY * tileSize);
         GameObject newElev = Instantiate(elevationObject[elevId], newTileObject.transform);
         newElev.GetComponentInChildren<Renderer>().material = elevationMaterial[tileId];
-        newTileObject.transform.eulerAngles=new Vector3(transform.eulerAngles.x,direction*90f,transform.eulerAngles.z);
+        newTileObject.transform.eulerAngles=new Vector3(transform.eulerAngles.x, rotation ,transform.eulerAngles.z);
         newTileObject.transform.parent = this.gameObject.transform;
 
     }

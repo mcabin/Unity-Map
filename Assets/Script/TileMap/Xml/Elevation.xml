@@ -503,7 +503,43 @@
 		</Elev>
 		<NorthNeighboors>
 			<Elev>
-				<Type>All</Type>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
 				<Rotation>0</Rotation>
 			</Elev>
 			<Elev>
@@ -534,12 +570,44 @@
 
 		<EastNeighboors>
 			<Elev>
-				<Type>Plateau</Type>
-				<Rotation>0</Rotation>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
 			</Elev>
 			<Elev>
-				<Type>All</Type>
+				<Type>Elev_One</Type>
 				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
+				<Rotation>0</Rotation>
 			</Elev>
 			<Elev>
 				<Type>Elev_One</Type>
@@ -569,12 +637,44 @@
 
 		<SouthNeighboors>
 			<Elev>
-				<Type>Plateau</Type>
-				<Rotation>0</Rotation>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
 			</Elev>
 			<Elev>
-				<Type>All</Type>
+				<Type>Elev_One</Type>
 				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
+				<Rotation>0</Rotation>
 			</Elev>
 			<Elev>
 				<Type>Elev_One</Type>
@@ -604,13 +704,46 @@
 
 		<WestNeighboors>
 			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
 				<Type>Plateau</Type>
 				<Rotation>0</Rotation>
 			</Elev>
-			<Elev>
-				<Type>All</Type>
-				<Rotation>270</Rotation>
-			</Elev>
+
 			<Elev>
 				<Type>Elev_One</Type>
 				<Rotation>0</Rotation>
@@ -637,4 +770,652 @@
 			</Elev>
 		</WestNeighboors>
 	</Elevation>
+	
+	<Elevation>
+		
+		<Elev>
+			<Type>Plateau</Type>
+			<Rotation>0</Rotation>
+		</Elev>
+		
+		
+		<NorthNeighboors>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+        </NorthNeighboors>
+
+        <EastNeighboors>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+        </EastNeighboors>
+
+        <SouthNeighboors>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+        </SouthNeighboors>
+
+        <WestNeighboors>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Plateau</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+        </WestNeighboors>
+	</Elevation>
+
+	<Elevation>
+        <Elev>
+            <Type>Elev_Temp</Type>
+            <Rotation>0</Rotation>
+        </Elev>
+        <NorthNeighboors>
+            <Elev>
+                <Type>Plateau</Type>
+                <Rotation>0</Rotation>
+            </Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+        </NorthNeighboors>
+
+        <EastNeighboors>
+            <Elev>
+                <Type>Plateau</Type>
+                <Rotation>0</Rotation>
+            </Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+        </EastNeighboors>
+
+        <SouthNeighboors>
+			<Elev>
+                <Type>Plateau</Type>
+                <Rotation>0</Rotation>
+            </Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>270</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+        </SouthNeighboors>
+
+        <WestNeighboors>
+            <Elev>
+                <Type>Plateau</Type>
+                <Rotation>0</Rotation>
+            </Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_One</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_PPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>0</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_EPE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_PE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EP</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>90</Rotation>
+			</Elev>
+			<Elev>
+				<Type>Elev_Curve_EE</Type>
+				<Rotation>180</Rotation>
+			</Elev>
+        </WestNeighboors>
+    </Elevation>
+
 </Elevations>
