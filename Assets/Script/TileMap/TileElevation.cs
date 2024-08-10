@@ -26,76 +26,63 @@ public class TileElevation : Tile
     }
     public void setElevationType(TileEnum.ElevEnum elevEnum,int rotation=0) 
     {
-        Debug.Log(rotation);
         elevationType=TileAsset.getElevationType(elevEnum).clone(rotation);
     }
 
+    private bool isValid(ElevationType type)
+    {
+        return westNeighboor.eastEdge.compare( type.westEdge) 
+            && eastNeighboor.westEdge.compare(type.eastEdge)
+            && southNeighboor.northEdge.compare(type.southEdge)
+            && northNeighboor.southEdge.compare(type.northEdge);
+    }
     public  void setTypeWithNeighboor()
     {
-        List<ElevationStruct> baseList;
-        if (northNeighboor != null)
+        ElevationType[] elevTypes= TileAsset.getElevationTypes();
+        List<ElevationType> possibleElevList= new List<ElevationType>();
+        for(int i = 0; i < elevTypes.Length; i++)
         {
-             baseList= northNeighboor.neighboorSouth;
+            ElevationType baseType = elevTypes[i];
+            if (baseType.elev == TileEnum.ElevEnum.PLAIN || baseType.elev == TileEnum.ElevEnum.PLATEAU || baseType.elev == TileEnum.ElevEnum.UNKNOW)
+                continue;
+            ElevationType typeNorth = baseType.clone(0);
+            ElevationType typeEast = baseType.clone(90);
+            ElevationType typeSouth = baseType.clone(180);
+            ElevationType typeWest = baseType.clone(270);
 
-            if(southNeighboor != null)
+            if (isValid(typeNorth))
             {
-                baseList = baseList.Intersect(southNeighboor.neighboorNorth).ToList();
+                possibleElevList.Add(typeNorth);
             }
-            if(westNeighboor != null)
+            if (isValid(typeEast))
             {
-                baseList = baseList.Intersect(westNeighboor.neighboorEast).ToList();
+                possibleElevList.Add(typeEast);
+            }
+            if (isValid(typeSouth))
+            {
+                possibleElevList.Add(typeSouth);
+            }
+            if (isValid(typeWest))
+            {
+                possibleElevList.Add(typeWest);
+            }
 
-            }
-            else if (eastNeighboor != null)
-            {
-                baseList = baseList.Intersect(eastNeighboor.neighboorWest).ToList();
-            }
-        }
-        else if(southNeighboor != null)
-        {
-            baseList = southNeighboor.neighboorNorth;
-            if (westNeighboor != null)
-            {
-                baseList = baseList.Intersect(westNeighboor.neighboorEast).ToList();
-
-            }
-            else if (eastNeighboor != null)
-            {
-                baseList = baseList.Intersect(eastNeighboor.neighboorWest).ToList();
-            }
-        }
-        else if(westNeighboor != null)
-        {
-            baseList = westNeighboor.neighboorEast;
-             if (eastNeighboor != null)
-            {
-                baseList = baseList.Intersect(eastNeighboor.neighboorWest).ToList();
-            }
-        }
-
-        else if (eastNeighboor != null)
-        {
-            baseList = eastNeighboor.neighboorWest;
-        }
-        else
-        {
-            throw new Exception("All neighboor are empty for "+coordX+" "+coordY+" "+altitude.type);
-        }
-        if(baseList.Count <= 0)
-        {
-            Debug.Log("Type " + elevationType + "\n\n North " + northNeighboor + "\n\n south " + southNeighboor + "\n\n west " + westNeighboor + "\n\n east " + eastNeighboor);
-            throw new Exception("No possible elevation for tile "+coordX+" "+coordY);
         }
         System.Random random = new System.Random();
-        int randomIndex = random.Next(0, baseList.Count-1);
-        ElevationStruct chosenElev = baseList[randomIndex];
-        setElevationType(chosenElev.enumElev, chosenElev.rotation);
-        Debug.Log("Type " + elevationType + "\n\n North " + northNeighboor + "\n\n south " + southNeighboor + "\n\n west " + westNeighboor + "\n\n east " + eastNeighboor);
+        if(possibleElevList.Count <= 0)
+        {
+            Debug.Log(" List count " + possibleElevList.Count + " N:" + northNeighboor + " E:" + eastNeighboor + " S:" + southNeighboor + " O:" + westNeighboor);
+            throw new Exception("List empty");
+        }
+        if(possibleElevList.Count > 1)
+        {
+            possibleElevList.RemoveAll(obj => obj.elev == TileEnum.ElevEnum.ELEV_PPP);
 
-    }
+            ElevationType epeType=possibleElevList.FirstOrDefault(obj => obj.elev == TileEnum.ElevEnum.ELEV_EPE);
+        }
+        int chosen=random.Next(0, possibleElevList.Count);
+        Debug.Log(coordX+" "+ coordY+" Type: " + possibleElevList[chosen]+" "+chosen+" Count "+possibleElevList.Count );
 
-    private Exception Exception()
-    {
-        throw new NotImplementedException();
+        elevationType = possibleElevList[chosen];
     }
 }

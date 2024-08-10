@@ -5,109 +5,96 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEditor.FilePathAttribute;
 
-public struct ElevationStruct:IEquatable<ElevationStruct>
+public struct EdgeStruct
 {
-    private int _rotation;
-    public int rotation
+    public bool isPlateau;
+    public bool isElevation;
+
+    public EdgeStruct(bool isPlateau,bool isElevation)
     {
-        get { return _rotation; }
-        set {
-            _rotation = value % 360;
-            }
-    }
-    public TileEnum.ElevEnum enumElev;
-    public ElevationStruct( TileEnum.ElevEnum enumElev,int rotation)
-    {
-        _rotation=rotation%360;
-        this.enumElev = enumElev;
+        this.isPlateau = isPlateau;
+        this.isElevation = isElevation;
     }
 
-    public bool Equals(ElevationStruct other)
+    public static bool operator ==(EdgeStruct a, EdgeStruct b)
     {
-        return this.rotation==other.rotation && this.enumElev==other.enumElev;
+        
+        return a.isPlateau == b.isPlateau && a.isElevation== b.isElevation;
     }
-    public override string ToString()
+    public static bool operator !=(EdgeStruct a, EdgeStruct b)
     {
-        return "Type: "+enumElev.ToString()+" Rotation :"+rotation+" ";
+
+        return a.isPlateau != b.isPlateau || a.isElevation != b.isElevation;
+    }
+    public bool compare(EdgeStruct other) {
+             return (other.isPlateau == this.isPlateau && isPlateau) || (isElevation && other.isElevation == this.isElevation) ||other==this;
+    }
+
+    public override bool Equals(object obj)
+    {
+        return obj is EdgeStruct @struct &&
+               isPlateau == @struct.isPlateau &&
+               isElevation == @struct.isElevation;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(isPlateau, isElevation);
     }
 }
 public class ElevationType
 {
-    public ElevationStruct elev { get; private set; }
-    public List<ElevationStruct> neighboorNorth { get; private set; }
-    public List<ElevationStruct> neighboorEast { get; private set; }
-    public List<ElevationStruct> neighboorSouth { get; private set; }
-    public List<ElevationStruct> neighboorWest { get; private set; }
+    public TileEnum.ElevEnum elev { get; private set; }
+    public int rarity { get; private set; }
+    private int _rotation;
+    public int rotation
+    {
+        get { return _rotation; }
+        set { _rotation = value % 360; }
+    }
+    public EdgeStruct northEdge { get; private set; }
+    public EdgeStruct eastEdge { get; private set; }
+    public EdgeStruct southEdge { get; private set; }
+    public EdgeStruct westEdge { get; private set; }
 
-    public ElevationType(ElevationStruct elev, List<ElevationStruct> neighboorNorth, List<ElevationStruct> neighboorEast,
-                        List<ElevationStruct> neighboorSouth, List<ElevationStruct> neighboorWest)
+    public ElevationType(TileEnum.ElevEnum elev,EdgeStruct northEdge, EdgeStruct eastEdge, EdgeStruct southEdge, EdgeStruct westEdge, int rotation)
     {
         this.elev = elev;
-        this.neighboorNorth = neighboorNorth;
-        this.neighboorEast = neighboorEast;
-        this.neighboorSouth = neighboorSouth;
-        this.neighboorWest = neighboorWest;
+        this.northEdge = northEdge;
+        this.eastEdge = eastEdge;
+        this.southEdge = southEdge;
+        this.westEdge = westEdge;
+        this.rotation = rotation;
     }
 
     public ElevationType clone(int rotation = 0)
     {
-
-        List<ElevationStruct> newNorth=new List<ElevationStruct>();
-        foreach(ElevationStruct e in neighboorNorth)
+        if(rotation == 0)
         {
-            int newRotation=e.rotation+ rotation;
-            newNorth.Add(new ElevationStruct(e.enumElev,newRotation));
+            return new ElevationType(elev, northEdge, eastEdge, southEdge, westEdge,rotation);
         }
-        List<ElevationStruct> newEast = new List<ElevationStruct>(neighboorEast);
-        foreach (ElevationStruct e in neighboorEast)
+        if (rotation == 90)
         {
-            int newRotation = e.rotation + rotation;
-            newEast.Add(new ElevationStruct(e.enumElev, newRotation));
+            return new ElevationType(elev, westEdge, northEdge, eastEdge, southEdge, rotation);
         }
-        List<ElevationStruct> newSouth = new List<ElevationStruct>(neighboorSouth);
-        foreach (ElevationStruct e in neighboorSouth)
+        if (rotation == 180)
         {
-            int newRotation = e.rotation + rotation;
-            newSouth.Add(new ElevationStruct(e.enumElev, newRotation));
+            return new ElevationType(elev, southEdge, westEdge, northEdge, eastEdge , rotation);
         }
-        List<ElevationStruct> newWest=new List<ElevationStruct>(neighboorWest);
-        foreach (ElevationStruct e in neighboorWest)
+        if (rotation == 270)
         {
-            int newRotation = e.rotation + rotation;
-            newWest.Add(new ElevationStruct(e.enumElev, newRotation));
+            return new ElevationType(elev,eastEdge , southEdge , westEdge , northEdge , rotation);
         }
-        return new ElevationType(new ElevationStruct(elev.enumElev, rotation+elev.rotation), newNorth, newEast, newSouth, newWest);
+        throw new Exception("Invalid rotation");
     }
 
     public override string ToString()
     {
-        string str=elev.ToString();
-        /*str += "North:\n";
-        foreach (ElevationStruct e in neighboorNorth)
-        {
-            str += e.ToString() + "\n";
-        }
-        str += "east:\n";
-        foreach (ElevationStruct e in neighboorEast)
-        {
-            str += e.ToString() + "\n";
-
-        }
-        str += "south:\n";
-
-        foreach (ElevationStruct e in neighboorSouth)
-        {
-            str += e.ToString() + "\n";
-
-        }
-        str += "west:\n";
-
-        foreach (ElevationStruct e in neighboorWest)
-        {
-            str += e.ToString() + "\n";
-
-        }*/
+        string str=elev.ToString()+" "+rotation;
 
         return str;
     }
+
+
+
 }

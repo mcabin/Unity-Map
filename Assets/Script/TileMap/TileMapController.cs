@@ -34,7 +34,11 @@ public class TileMapController: MonoBehaviour
                 if(tileAltitude.type==TileEnum.AltitudeEnum.ELEVATION )
                 {
                     TileElevation elevTile=(TileElevation)tileMap.getTile(w,h);
-                    tileMapView.showElevation(w, h,tileId,(int)elevTile.elevationType.elev.enumElev,elevTile.elevationType.elev.rotation);
+                    if (elevTile.elevationType.elev == TileEnum.ElevEnum.PLATEAU) {
+                        tileMapView.showPlateauTile(w, h, tileId);
+                    }
+                    else
+                        tileMapView.showElevation(w, h,tileId,(int)elevTile.elevationType.elev,elevTile.elevationType.rotation);
                 }
                 else
                 {

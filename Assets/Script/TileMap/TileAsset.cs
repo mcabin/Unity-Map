@@ -109,27 +109,6 @@ public static class TileAsset
         }
     }
     //ELEVATION
-
-    private static ElevationStruct parseOneElevStruc(XmlNode elevationXml)
-    {
-            
-            string typeStr = elevationXml.SelectSingleNode("Type")?.InnerText;
-            if (Enum.TryParse(typeStr, true, out TileEnum.ElevEnum elevEnum))
-            {
-                if (int.TryParse(elevationXml.SelectSingleNode("Rotation")?.InnerText, out int rotation))
-                {
-                    ElevationStruct newElevation = new ElevationStruct();
-                    newElevation.rotation = rotation;
-                    newElevation.enumElev = elevEnum;
-                    return newElevation;
-                }
-                else
-                {
-                    throw new Exception($"Invalid numeric value in XML for elevation {elevEnum}");
-                }
-            }
-            else throw new Exception("Enum doesn't exist for " + typeStr);        
-    }
     private static void intitialiseElevationType()
     {
         XmlDocument xmlDoc = new XmlDocument();
@@ -137,67 +116,60 @@ public static class TileAsset
         XmlNodeList elevationsXml = xmlDoc.SelectNodes("//Elevation");
         foreach (XmlNode elevationXml in elevationsXml)
         {
-            XmlNode elev = elevationXml.SelectSingleNode("Elev");
-            if (elev != null)
+            string typeStr = elevationXml.SelectSingleNode("Type")?.InnerText;
+            if (Enum.TryParse(typeStr, true, out TileEnum.ElevEnum elevEnum))
             {
-                ElevationStruct mainElev = parseOneElevStruc(elev);
-
-                //North
-                List<ElevationStruct> northElevNeighboorsStructs=new List<ElevationStruct>();
-                XmlNode northNeighboors = elevationXml.SelectSingleNode("NorthNeighboors");
-                if (northNeighboors != null)
+                if (int.TryParse(elevationXml.SelectSingleNode("Rotation")?.InnerText, out int minAltitude))
                 {
-                    XmlNodeList listNorthNeighboors = northNeighboors.SelectNodes("Elev");
-                    foreach (XmlNode neighboor in listNorthNeighboors)
-                    {
-                        northElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
-                    }
-                }
-                else throw new Exception("No north found");
 
-                //South
-                List<ElevationStruct> southElevNeighboorsStructs = new List<ElevationStruct>();
-                XmlNode southNeighboors = elevationXml.SelectSingleNode("SouthNeighboors");
-                if (southNeighboors != null)
-                {
-                    XmlNodeList listSouthNeighboors = southNeighboors.SelectNodes("Elev");
-                    foreach (XmlNode neighboor in listSouthNeighboors)
+                    //North
+                    EdgeStruct northEdge;
+                    if (int.TryParse(elevationXml.SelectSingleNode("NorthEdge").SelectSingleNode("isElev")?.InnerText, out int northIsElev) &&
+                        int.TryParse(elevationXml.SelectSingleNode("NorthEdge").SelectSingleNode("isPlateau")?.InnerText, out int northIsPlateau)
+                        )
                     {
-                        southElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                        northEdge= new EdgeStruct(northIsPlateau>0,northIsElev>0);
                     }
-                }
-                else throw new Exception("No south found");
+                    else
+                        throw new Exception("Invalid north for "+elevEnum);
 
-                //west
-                List<ElevationStruct> westElevNeighboorsStructs = new List<ElevationStruct>();
-                XmlNode westNeighboors = elevationXml.SelectSingleNode("WestNeighboors");
-                if (westNeighboors != null)
-                {
-                    XmlNodeList listWestNeighboors = westNeighboors.SelectNodes("Elev");
-                    foreach (XmlNode neighboor in listWestNeighboors)
+                    //East
+                    EdgeStruct eastEdge;
+                    if (int.TryParse(elevationXml.SelectSingleNode("EastEdge").SelectSingleNode("isElev")?.InnerText, out int eastIsElev) &&
+                        int.TryParse(elevationXml.SelectSingleNode("EastEdge").SelectSingleNode("isPlateau")?.InnerText, out int eastIsPlateau)
+                        )
                     {
-                        westElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                        eastEdge = new EdgeStruct(eastIsPlateau > 0, eastIsElev > 0);
                     }
-                }
-                else throw new Exception("No west found");
+                    else
+                        throw new Exception("Invalid east for " + elevEnum);
 
-                //east
-                List<ElevationStruct> eastElevNeighboorsStructs = new List<ElevationStruct>();
-                XmlNode eastNeighboors = elevationXml.SelectSingleNode("EastNeighboors");
-                if (eastNeighboors != null)
-                {
-                    XmlNodeList listEastNeighboors = eastNeighboors.SelectNodes("Elev");
-                    foreach (XmlNode neighboor in listEastNeighboors)
+                    //south
+                    EdgeStruct southEdge;
+                    if (int.TryParse(elevationXml.SelectSingleNode("SouthEdge").SelectSingleNode("isElev")?.InnerText, out int southIsElev) &&
+                        int.TryParse(elevationXml.SelectSingleNode("SouthEdge").SelectSingleNode("isPlateau")?.InnerText, out int southIsPlateau)
+                        )
                     {
-                        eastElevNeighboorsStructs.Add(parseOneElevStruc(neighboor));
+                        southEdge = new EdgeStruct(southIsPlateau > 0, southIsElev > 0);
                     }
+                    else
+                        throw new Exception("Invalid south for " + elevEnum);
+
+                    //west
+                    EdgeStruct westEdge;
+                    if (int.TryParse(elevationXml.SelectSingleNode("WestEdge").SelectSingleNode("isElev")?.InnerText, out int westIsElev) &&
+                        int.TryParse(elevationXml.SelectSingleNode("WestEdge").SelectSingleNode("isPlateau")?.InnerText, out int westIsPlateau)
+                        )
+                    {
+                        westEdge = new EdgeStruct(westIsPlateau > 0, westIsElev > 0);
+                    }
+                    else
+                        throw new Exception("Invalid west for " + elevEnum);
+                    elevationTypes[(int)elevEnum] = new ElevationType(elevEnum, northEdge, eastEdge, southEdge, westEdge, 0);
                 }
-                else throw new Exception("No east found");
-                elevationTypes[(int)mainElev.enumElev] = new ElevationType(mainElev,northElevNeighboorsStructs,eastElevNeighboorsStructs,southElevNeighboorsStructs,westElevNeighboorsStructs);
+                else throw new Exception("incorrect rotation");
+
             }
-            else throw new Exception("No elev found");
-            
-           
         }
     }
     //FEATURE
@@ -223,6 +195,11 @@ public static class TileAsset
     public static BiomeType getBiomeType(TileEnum.BiomeEnum key)
     {
         return biomeTypes[(int)key];
+    }
+
+    public static ElevationType[] getElevationTypes()
+    {
+        return elevationTypes;
     }
 
     public static ElevationType getElevationType(TileEnum.ElevEnum key)

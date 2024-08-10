@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,6 +31,18 @@ public class TileMapViewer : MonoBehaviour
         newTileObject.transform.parent = this.gameObject.transform;
 
     }
+
+    public void showPlateauTile(int coordX,int coordY,int tileId)
+    {
+        GameObject newTileObject = new GameObject("Tile " + coordX.ToString() + " " + coordY.ToString());
+        newTileObject.transform.position = new Vector3(coordX * tileSize, 0, coordY * tileSize);
+        GameObject upObject = Instantiate(plateauTileObjects[tileId], newTileObject.transform);
+
+        if (upObject != null)
+        {
+            newTileObject.transform.parent = this.gameObject.transform;
+        }
+    }
     public void showTile(int coordX, int coordY,int tileId,int tileAltitude)
     {
         GameObject newTileObject = new GameObject("Tile "+ coordX.ToString()+" "+coordY.ToString());
@@ -43,11 +56,6 @@ public class TileMapViewer : MonoBehaviour
         else if (tileAltitude ==1)
         {
             upObject = Instantiate(plainTilesObject[tileId], newTileObject.transform);
-        }
-        else if (tileAltitude >2)
-        {
-            upObject = Instantiate(plateauTileObjects[tileId], newTileObject.transform);
-
         }
         if(upObject != null)
         {

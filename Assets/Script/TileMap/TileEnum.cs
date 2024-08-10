@@ -30,7 +30,7 @@ public static class TileEnum
         ELEV_CURVE_PP = 8,
         PLAIN=9,
         PLATEAU= 10,
-        ELEV_TEMP=11
+        UNKNOW=11
    
     }
     public enum BiomeEnum
