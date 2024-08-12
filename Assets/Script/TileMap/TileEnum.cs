@@ -28,9 +28,11 @@ public static class TileEnum
         ELEV_CURVE_EP=6,
         ELEV_CURVE_PE = 7,
         ELEV_CURVE_PP = 8,
-        PLAIN=9,
-        PLATEAU= 10,
-        UNKNOW=11
+        ELEV_TWO=9,
+        SOLO_PLATEAU=10,
+        PLAIN =11,
+        PLATEAU= 12,
+        UNKNOW=13
    
     }
     public enum BiomeEnum

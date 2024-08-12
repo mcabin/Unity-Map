@@ -172,13 +172,18 @@ MonoBehaviour:
   - {fileID: 8428070778545234494, guid: b74c971760b73b24a9e9f93712e88928, type: 3}
   waterTile: {fileID: 919132149155446097, guid: 3e2321dbeb66517488c31251ce4f50c7, type: 3}
   elevationObject:
-  - {fileID: 2284694900078555752, guid: 09c6e496ad3b5d64eb5b4249ef2eda78, type: 3}
-  - {fileID: 3255616423147119323, guid: 196af35e6f10f33419b73e0e37878b4f, type: 3}
-  - {fileID: 7249324078104514668, guid: c4da2046acc1cd94c98c2fea94f6438e, type: 3}
-  - {fileID: 5732508711312541218, guid: 009b3d8ac70e5e7438397fc2983ad057, type: 3}
-  - {fileID: 5972834033087454768, guid: 7d9fcee8650e71147ab292a8b573c267, type: 3}
-  - {fileID: 4882054819965249366, guid: ef9a0f3ade6001d4689756a8eec3f045, type: 3}
-  - {fileID: 4084185075483755309, guid: 427d5e259b92bb24ab78c83423e9bdb5, type: 3}
+  - {fileID: 4111989468999714978, guid: 0a7d9b024c2d32b4d9f166df810060ad, type: 3}
+  - {fileID: 1840504098737139840, guid: e1bfddd4fa1d5fa4f9cb9cf9ff853d6a, type: 3}
+  - {fileID: 8381543477429937094, guid: 1f3f6ad3f1573704292e9d2582147a40, type: 3}
+  - {fileID: 7694618174363875725, guid: 324572bff93486b448d835be1742276a, type: 3}
+  - {fileID: 8862044617360096281, guid: 79d972c83da449e4a950e71c4b3b1d45, type: 3}
+  - {fileID: 7894611666835382280, guid: 26a13d328a6d26b409bb06b541fc0986, type: 3}
+  - {fileID: 8362630197455310904, guid: 02d2351aa0bee7b4dac8fba5cb595c15, type: 3}
+  - {fileID: 5050233994811022404, guid: 6b7d5fd4f3420604788372e8f0e518f7, type: 3}
+  - {fileID: 5138203351894104107, guid: 2d82588178f56804ca49612a77d85035, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
   - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
   elevationMaterial:
   - {fileID: 2100000, guid: 6a02630de6730834bbd0156f7c887342, type: 2}
@@ -311,7 +316,7 @@ Transform:
   m_GameObject: {fileID: 349311843}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -3.25, y: 8.45, z: 5.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

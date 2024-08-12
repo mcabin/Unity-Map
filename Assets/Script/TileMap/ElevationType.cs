@@ -9,7 +9,6 @@ public struct EdgeStruct
 {
     public bool isPlateau;
     public bool isElevation;
-
     public EdgeStruct(bool isPlateau,bool isElevation)
     {
         this.isPlateau = isPlateau;
@@ -44,6 +43,7 @@ public struct EdgeStruct
 }
 public class ElevationType
 {
+    public bool isTempory => elev == TileEnum.ElevEnum.UNKNOW;
     public TileEnum.ElevEnum elev { get; private set; }
     public int rarity { get; private set; }
     private int _rotation;
@@ -57,7 +57,7 @@ public class ElevationType
     public EdgeStruct southEdge { get; private set; }
     public EdgeStruct westEdge { get; private set; }
 
-    public ElevationType(TileEnum.ElevEnum elev,EdgeStruct northEdge, EdgeStruct eastEdge, EdgeStruct southEdge, EdgeStruct westEdge, int rotation)
+    public ElevationType(TileEnum.ElevEnum elev,EdgeStruct northEdge, EdgeStruct eastEdge, EdgeStruct southEdge, EdgeStruct westEdge, int rotation,int rarity)
     {
         this.elev = elev;
         this.northEdge = northEdge;
@@ -65,25 +65,26 @@ public class ElevationType
         this.southEdge = southEdge;
         this.westEdge = westEdge;
         this.rotation = rotation;
+        this.rarity = rarity;
     }
 
     public ElevationType clone(int rotation = 0)
     {
         if(rotation == 0)
         {
-            return new ElevationType(elev, northEdge, eastEdge, southEdge, westEdge,rotation);
+            return new ElevationType(elev, northEdge, eastEdge, southEdge, westEdge,rotation,rarity);
         }
         if (rotation == 90)
         {
-            return new ElevationType(elev, westEdge, northEdge, eastEdge, southEdge, rotation);
+            return new ElevationType(elev, westEdge, northEdge, eastEdge, southEdge, rotation, rarity);
         }
         if (rotation == 180)
         {
-            return new ElevationType(elev, southEdge, westEdge, northEdge, eastEdge , rotation);
+            return new ElevationType(elev, southEdge, westEdge, northEdge, eastEdge , rotation, rarity);
         }
         if (rotation == 270)
         {
-            return new ElevationType(elev,eastEdge , southEdge , westEdge , northEdge , rotation);
+            return new ElevationType(elev,eastEdge , southEdge , westEdge , northEdge , rotation, rarity);
         }
         throw new Exception("Invalid rotation");
     }

@@ -15,6 +15,8 @@ public class TileElevation : Tile
     public ElevationType westNeighboor;
     public ElevationType eastNeighboor;
 
+    public int nbUnknow=> (northNeighboor.isTempory ? 1 : 0)+ (southNeighboor.isTempory ? 1:0) + (westNeighboor.isTempory ? 1 : 0) + (eastNeighboor.isTempory ? 1 : 0);
+        
     public TileElevation(BiomeType biome, int coordX, int coordY, AltitudeType altitude) : base(biome, coordX, coordY, altitude)
     {
         this.elevationType = null;
@@ -36,12 +38,13 @@ public class TileElevation : Tile
             && southNeighboor.northEdge.compare(type.southEdge)
             && northNeighboor.southEdge.compare(type.northEdge);
     }
-    public  void setTypeWithNeighboor()
+    public  void setTypeWithNeighboor(int seed)
     {
         ElevationType[] elevTypes= TileAsset.getElevationTypes();
         List<ElevationType> possibleElevList= new List<ElevationType>();
         for(int i = 0; i < elevTypes.Length; i++)
         {
+
             ElevationType baseType = elevTypes[i];
             if (baseType.elev == TileEnum.ElevEnum.PLAIN || baseType.elev == TileEnum.ElevEnum.PLATEAU || baseType.elev == TileEnum.ElevEnum.UNKNOW)
                 continue;
@@ -68,21 +71,13 @@ public class TileElevation : Tile
             }
 
         }
-        System.Random random = new System.Random();
         if(possibleElevList.Count <= 0)
         {
             Debug.Log(" List count " + possibleElevList.Count + " N:" + northNeighboor + " E:" + eastNeighboor + " S:" + southNeighboor + " O:" + westNeighboor);
             throw new Exception("List empty");
         }
-        if(possibleElevList.Count > 1)
-        {
-            possibleElevList.RemoveAll(obj => obj.elev == TileEnum.ElevEnum.ELEV_PPP);
 
-            ElevationType epeType=possibleElevList.FirstOrDefault(obj => obj.elev == TileEnum.ElevEnum.ELEV_EPE);
-        }
-        int chosen=random.Next(0, possibleElevList.Count);
-        Debug.Log(coordX+" "+ coordY+" Type: " + possibleElevList[chosen]+" "+chosen+" Count "+possibleElevList.Count );
-
-        elevationType = possibleElevList[chosen];
+        RandomListSelector randSelect = new RandomListSelector(seed);
+        elevationType=randSelect.SelectWeighted(possibleElevList, obj => obj.rarity);
     }
 }

@@ -11,7 +11,7 @@
 		</Rotation>
 		<Rarity>1</Rarity>
 		<NorthEdge>
-			<isElev>0</isElev>
+			<isElev>1</isElev>
 			<isPlateau>1</isPlateau>
 		</NorthEdge>
 		
@@ -42,7 +42,7 @@
 		</Rotation>
 
 		<NorthEdge>
-			<isElev>0</isElev>
+			<isElev>1</isElev>
 			<isPlateau>1</isPlateau>
 		</NorthEdge>
 
@@ -156,7 +156,7 @@
 		<Type>
 			ELEV_CURVE_EP
 		</Type>
-		<Rarity>10</Rarity>
+		<Rarity>5</Rarity>
 		<Rotation>
 			0
 		</Rotation>
@@ -187,7 +187,7 @@
 		<Type>
 			ELEV_CURVE_PE
 		</Type>
-		<Rarity>10</Rarity>
+		<Rarity>20</Rarity>
 
 		<Rotation>
 			0
@@ -218,7 +218,7 @@
 		<Type>
 			ELEV_CURVE_EE
 		</Type>
-		<Rarity>20</Rarity>
+		<Rarity>5</Rarity>
 
 		<Rotation>
 			0
@@ -366,6 +366,66 @@
 		<WestEdge>
 			<isElev>1</isElev>
 			<isPlateau>1</isPlateau>
+		</WestEdge>
+	</Elevation>
+
+	<Elevation>
+		<Type>
+			ELEV_TWO
+		</Type>
+		<Rarity>1</Rarity>
+		<Rotation>
+			0
+		</Rotation>
+
+		<NorthEdge>
+			<isElev>0</isElev>
+			<isPlateau>0</isPlateau>
+		</NorthEdge>
+
+		<EastEdge>
+			<isElev>1</isElev>
+			<isPlateau>1</isPlateau>
+		</EastEdge>
+
+		<SouthEdge>
+			<isElev>0</isElev>
+			<isPlateau>0</isPlateau>
+		</SouthEdge>
+
+		<WestEdge>
+			<isElev>1</isElev>
+			<isPlateau>1</isPlateau>
+		</WestEdge>
+	</Elevation>
+	
+	<Elevation>
+		<Type>
+			SOLO_PLATEAU
+		</Type>
+		<Rarity>1</Rarity>
+		<Rotation>
+			0
+		</Rotation>
+
+		<NorthEdge>
+			<isElev>0</isElev>
+			<isPlateau>0</isPlateau>
+		</NorthEdge>
+
+		<EastEdge>
+			<isElev>0</isElev>
+			<isPlateau>0</isPlateau>
+		</EastEdge>
+
+		<SouthEdge>
+			<isElev>0</isElev>
+			<isPlateau>0</isPlateau>
+		</SouthEdge>
+
+		<WestEdge>
+			<isElev>0</isElev>
+			<isPlateau>0</isPlateau>
 		</WestEdge>
 	</Elevation>
 </Elevations>

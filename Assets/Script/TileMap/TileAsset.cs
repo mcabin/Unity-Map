@@ -119,7 +119,8 @@ public static class TileAsset
             string typeStr = elevationXml.SelectSingleNode("Type")?.InnerText;
             if (Enum.TryParse(typeStr, true, out TileEnum.ElevEnum elevEnum))
             {
-                if (int.TryParse(elevationXml.SelectSingleNode("Rotation")?.InnerText, out int minAltitude))
+                if (int.TryParse(elevationXml.SelectSingleNode("Rotation")?.InnerText, out int rotation) &&
+                    int.TryParse(elevationXml.SelectSingleNode("Rarity")?.InnerText, out int rarity))
                 {
 
                     //North
@@ -165,7 +166,7 @@ public static class TileAsset
                     }
                     else
                         throw new Exception("Invalid west for " + elevEnum);
-                    elevationTypes[(int)elevEnum] = new ElevationType(elevEnum, northEdge, eastEdge, southEdge, westEdge, 0);
+                    elevationTypes[(int)elevEnum] = new ElevationType(elevEnum, northEdge, eastEdge, southEdge, westEdge, 0, rarity);
                 }
                 else throw new Exception("incorrect rotation");
 

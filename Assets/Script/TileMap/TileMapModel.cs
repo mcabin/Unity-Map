@@ -184,7 +184,7 @@ public class TileMapModel
         int[,] temperatures = new int[height, width];
         List<(int, int)> elevationTilesCoord = new List<(int, int)>();
         List<(int, int)> plainTilesCoord = new List<(int, int)>();
-        List<(int, int)> borderTilesCoord = new List<(int, int)>();
+        List<TileElevation> borderTilesCoord = new List<TileElevation>();
 
 
         // Liste pour garder une trace des tuiles d'eau
@@ -317,7 +317,7 @@ public class TileMapModel
                 
                 else
                     elevTile.westNeighboor = TileAsset.getElevationType(ElevEnum.UNKNOW);
-                borderTilesCoord.Add(coord);
+                borderTilesCoord.Add((TileElevation)tiles[coord.Item1,coord.Item2]);
             }
             tiles[h, w] = elevTile;
 
@@ -333,11 +333,15 @@ public class TileMapModel
             tiles[h, w] = elevTile;
             
         }
-        foreach(var coord in borderTilesCoord) {
-            int h = coord.Item1;
-            int w = coord.Item2;
-            TileElevation elev = (TileElevation)tiles[h, w];
-            elev.setTypeWithNeighboor();
+        while(borderTilesCoord.Count > 0)
+        {
+            borderTilesCoord.Sort((p1, p2) => p1.nbUnknow.CompareTo(p2.nbUnknow));
+
+        }
+        foreach(var elev in borderTilesCoord) {
+            
+            
+            elev.setTypeWithNeighboor(0);
             if (h > 0)
             {
                 Tile northTile = tiles[h - 1, w];

@@ -31,7 +31,7 @@ public class TileMapController: MonoBehaviour
             {
                 int tileId=(int)tileMap.getTile(w, h).biome.type;
                 AltitudeType tileAltitude=tileMap.getTile(w, h).altitude;
-                if(tileAltitude.type==TileEnum.AltitudeEnum.ELEVATION )
+                if(tileAltitude.level>=(int)TileEnum.AltitudeEnum.ELEVATION)
                 {
                     TileElevation elevTile=(TileElevation)tileMap.getTile(w,h);
                     if (elevTile.elevationType.elev == TileEnum.ElevEnum.PLATEAU) {
