@@ -175,11 +175,16 @@ MonoBehaviour:
   - {fileID: 1840504098737139840, guid: e1bfddd4fa1d5fa4f9cb9cf9ff853d6a, type: 3}
   - {fileID: 8381543477429937094, guid: 1f3f6ad3f1573704292e9d2582147a40, type: 3}
   - {fileID: 7694618174363875725, guid: 324572bff93486b448d835be1742276a, type: 3}
-  - {fileID: 4111989468999714978, guid: 0a7d9b024c2d32b4d9f166df810060ad, type: 3}
+  - {fileID: 8862044617360096281, guid: 79d972c83da449e4a950e71c4b3b1d45, type: 3}
   - {fileID: 7894611666835382280, guid: 26a13d328a6d26b409bb06b541fc0986, type: 3}
   - {fileID: 8362630197455310904, guid: 02d2351aa0bee7b4dac8fba5cb595c15, type: 3}
   - {fileID: 5050233994811022404, guid: 6b7d5fd4f3420604788372e8f0e518f7, type: 3}
   - {fileID: 5138203351894104107, guid: 2d82588178f56804ca49612a77d85035, type: 3}
+  - {fileID: 3150385524409628359, guid: 99a9773fc9e80854ea0996a9039a2d8a, type: 3}
+  - {fileID: 7267039891464740095, guid: ad2fdcd488ee38048b9b3086a148e93a, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
+  - {fileID: 7597230345366030809, guid: 21a974bb931cac346a25a4532dad7de3, type: 3}
   elevationMaterial:
   - {fileID: 2100000, guid: 6a02630de6730834bbd0156f7c887342, type: 2}
   - {fileID: 2100000, guid: e7f480dd4ccdf74429b50d135d1d824b, type: 2}
@@ -202,9 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMapView: {fileID: 98146291}
-  mapHeight: 20
-  mapWidth: 20
-  seed: 156165
+  mapHeight: 50
+  mapWidth: 50
+  seed: 120
   altitudeScale: 1
   temperatureModifier: 1
   moistureModifier: 1
@@ -223,63 +228,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &748850829
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 21.511473
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.10068426
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 18.835934
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 7026484972131803959, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694618174363875725, guid: 324572bff93486b448d835be1742276a, type: 3}
-      propertyPath: m_Name
-      value: ElevEPE
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 324572bff93486b448d835be1742276a, type: 3}
 --- !u!1 &865759858
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,4 +421,3 @@ SceneRoots:
   - {fileID: 865759861}
   - {fileID: 1450047843}
   - {fileID: 98146293}
-  - {fileID: 748850829}

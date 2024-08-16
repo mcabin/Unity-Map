@@ -317,7 +317,7 @@ public class TileMapModel
                 
                 else
                     elevTile.westNeighboor = TileAsset.getElevationType(ElevEnum.UNKNOW);
-                borderTilesCoord.Add((TileElevation)tiles[coord.Item1,coord.Item2]);
+                borderTilesCoord.Add(elevTile);
             }
             tiles[h, w] = elevTile;
 
@@ -336,12 +336,11 @@ public class TileMapModel
         while(borderTilesCoord.Count > 0)
         {
             borderTilesCoord.Sort((p1, p2) => p1.nbUnknow.CompareTo(p2.nbUnknow));
-
-        }
-        foreach(var elev in borderTilesCoord) {
-            
-            
+            TileElevation elev = borderTilesCoord[0];
+            borderTilesCoord.RemoveAt(0);
             elev.setTypeWithNeighboor(0);
+            int w = elev.coordX;
+            int h = elev.coordY;
             if (h > 0)
             {
                 Tile northTile = tiles[h - 1, w];
@@ -351,16 +350,16 @@ public class TileMapModel
                     currentTileElevation.southNeighboor = elev.elevationType;
                 }
             }
-            if (width - 1>w)
+            if (width - 1 > w)
             {
-                Tile currentTile = tiles[h , w +1];
+                Tile currentTile = tiles[h, w + 1];
                 if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
                 {
                     TileElevation currentTileElevation = (TileElevation)currentTile;
                     currentTileElevation.eastNeighboor = elev.elevationType;
                 }
             }
-            if (w >0)
+            if (w > 0)
             {
                 Tile currentTile = tiles[h, w - 1];
                 if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
@@ -371,7 +370,7 @@ public class TileMapModel
             }
             if (h < height - 1)
             {
-                Tile currentTile = tiles[h+1, w];
+                Tile currentTile = tiles[h + 1, w];
                 if (currentTile.altitude.level >= (int)TileEnum.AltitudeEnum.ELEVATION)
                 {
                     TileElevation currentTileElevation = (TileElevation)currentTile;

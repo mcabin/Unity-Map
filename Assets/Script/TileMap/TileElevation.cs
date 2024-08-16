@@ -15,7 +15,10 @@ public class TileElevation : Tile
     public ElevationType westNeighboor;
     public ElevationType eastNeighboor;
 
-    public int nbUnknow=> (northNeighboor.isTempory ? 1 : 0)+ (southNeighboor.isTempory ? 1:0) + (westNeighboor.isTempory ? 1 : 0) + (eastNeighboor.isTempory ? 1 : 0);
+    public int nbUnknow=> ((northNeighboor?.isTempory ?? false) ? 1 : 0)
+        + ((southNeighboor?.isTempory ?? false) ? 1 : 0)
+        + ((westNeighboor?.isTempory ?? false) ? 1 : 0)
+        + ((eastNeighboor?.isTempory ?? false) ? 1 : 0);
         
     public TileElevation(BiomeType biome, int coordX, int coordY, AltitudeType altitude) : base(biome, coordX, coordY, altitude)
     {
