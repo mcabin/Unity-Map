@@ -9,7 +9,7 @@ public class Tile
 {
     public BiomeType biome;
     public List<TileFeature> features;
-    public int coordX, coordY;
+    public int coordW, coordH;
     public AltitudeType altitude;
     public int movementDifficulty { get; private set; }
     
@@ -17,14 +17,14 @@ public class Tile
     {
 
     }
-    public Tile(BiomeType biome,int coordX,int coordY,AltitudeType altitude)
+    public Tile(BiomeType biome,int coordW,int coordH,AltitudeType altitude)
     {
 
         //Biome
         this.biome= biome;
 
-        this.coordX = coordX;
-        this.coordY = coordY;
+        this.coordW = coordW;
+        this.coordH = coordH;
 
         this.altitude = altitude;
         setMovementDifficulty();

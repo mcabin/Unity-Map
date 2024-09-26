@@ -5,29 +5,29 @@
 		<Type>
 			Elev_PPP
 		</Type>
+		<Altitude>Plateau</Altitude>
+		<Rarity>1</Rarity> 
 		
-		<Rotation>
-			0
-		</Rotation>
-		<Rarity>1</Rarity>
+		<isDefault>0</isDefault>
+		
 		<NorthEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 		
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</WestEdge>
 		
 	</Elevation>
@@ -36,29 +36,29 @@
 		<Type>
 			ELEV_ONE
 		</Type>
-		<Rarity>1</Rarity>
-		<Rotation>
-			0
-		</Rotation>
-
+		<Altitude>Plateau</Altitude>
+		<Rarity>1</Rarity> 
+		
+		<isDefault>0</isDefault>
+		
 		<NorthEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -66,29 +66,30 @@
 		<Type>
 			ELEV_PPE
 		</Type>
+		<Altitude>Plateau</Altitude>
+
 		<Rarity>10</Rarity>
-		<Rotation>
-			0
-		</Rotation>
+		
+		<isDefault>0</isDefault>
 
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -96,29 +97,30 @@
 		<Type>
 			ELEV_EPP
 		</Type>
-		<Rarity>10</Rarity>
-		<Rotation>
-			0
-		</Rotation>
+		<Altitude>Plateau</Altitude>
+
+		<Rarity>10</Rarity> 
+		
+		<isDefault>0</isDefault>
 
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -126,29 +128,30 @@
 		<Type>
 			ELEV_EPE
 		</Type>
-		<Rarity>25</Rarity>
-		<Rotation>
-			0
-		</Rotation>
+		<Altitude>Plateau</Altitude>
 
+		<Rarity>25</Rarity> 
+		
+		<isDefault>0</isDefault>
+		
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -156,29 +159,30 @@
 		<Type>
 			ELEV_CURVE_EP
 		</Type>
-		<Rarity>5</Rarity>
-		<Rotation>
-			0
-		</Rotation>
+		<Altitude>Plateau</Altitude>
 
+		<Rarity>5</Rarity> 
+		
+		<isDefault>0</isDefault>
+		
 		<NorthEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -187,29 +191,30 @@
 		<Type>
 			ELEV_CURVE_PE
 		</Type>
-		<Rarity>20</Rarity>
+		<Altitude>Plateau</Altitude>
 
-		<Rotation>
-			0
-		</Rotation>
+		<Rarity>20</Rarity> 
+		
+		<isDefault>0</isDefault>
+
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -218,30 +223,31 @@
 		<Type>
 			ELEV_CURVE_EE
 		</Type>
-		<Rarity>5</Rarity>
+		
+		<Altitude>Plateau</Altitude>
 
-		<Rotation>
-			0
-		</Rotation>
+		<Rarity>5</Rarity> 
+		
+		<isDefault>0</isDefault>
 
 		<NorthEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>1</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>1</isRising>
+			<isUp>0</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
@@ -249,153 +255,93 @@
 		<Type>
 			ELEV_CURVE_PP
 		</Type>
-		<Rarity>5</Rarity>
-
-		<Rotation>
-			0
-		</Rotation>
+		
+		<Altitude>Plateau</Altitude>
+		
+		<Rarity>5</Rarity> 
+		
+		<isDefault>0</isDefault>
 
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</WestEdge>
 	</Elevation>
 
 	<Elevation>
 		<Type>
-			Plateau
+			PLATEAU
 		</Type>
+		
+		<Altitude>Plateau</Altitude>
 
-		<Rotation>
-			0
-		</Rotation>
-		<Rarity>1</Rarity>
+		<Rarity>1</Rarity> 
+		
+		<isDefault>1</isDefault>
 
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</WestEdge>
 	</Elevation>
-
-	<Elevation>
-		<Type>
-			PLAIN
-		</Type>
-		<Rarity>1</Rarity>
-		<Rotation>
-			0
-		</Rotation>
-
-		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
-		</NorthEdge>
-
-		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
-		</EastEdge>
-
-		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
-		</SouthEdge>
-
-		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
-		</WestEdge>
-	</Elevation>
-
-
-	<Elevation>
-		<Type>
-			UNKNOW
-		</Type>
-		<Rarity>1</Rarity>
-
-		<Rotation>
-			0
-		</Rotation>
-
-		<NorthEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
-		</NorthEdge>
-
-		<EastEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
-		</EastEdge>
-
-		<SouthEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
-		</SouthEdge>
-
-		<WestEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
-		</WestEdge>
-	</Elevation>
-
+	
 	<Elevation>
 		<Type>
 			ELEV_TWO
 		</Type>
-		<Rarity>1</Rarity>
-		<Rotation>
-			0
-		</Rotation>
-
+		<Altitude>Plateau</Altitude>
+		<Rarity>1</Rarity> 
+		
+		<isDefault>0</isDefault>
+		
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>1</isRising>
+			<isUp>1</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>1</isElev>
-			<isPlateau>1</isPlateau>
+			<isRising>1</isRising>
+			<isUp>1</isUp>
 		</WestEdge>
 	</Elevation>
 	
@@ -403,29 +349,222 @@
 		<Type>
 			SOLO_PLATEAU
 		</Type>
-		<Rarity>1</Rarity>
-		<Rotation>
-			0
-		</Rotation>
-
+		<Altitude>Plateau</Altitude>	
+		<Rarity>1</Rarity> 
+		
+		<isDefault>0</isDefault>
+		
 		<NorthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</NorthEdge>
 
 		<EastEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</EastEdge>
 
 		<SouthEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
 		</SouthEdge>
 
 		<WestEdge>
-			<isElev>0</isElev>
-			<isPlateau>0</isPlateau>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</WestEdge>
+	</Elevation>
+
+	<Elevation>
+		<Type>
+			CLIFF_MIDDLE
+		</Type>
+
+		<Altitude>Plateau</Altitude>
+
+		<Rarity>100</Rarity>
+
+		<isDefault>0</isDefault>
+
+		<NorthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</NorthEdge>
+
+		<EastEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</EastEdge>
+
+		<SouthEdge>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</SouthEdge>
+
+		<WestEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</WestEdge>
+	</Elevation>
+
+	<Elevation>
+		<Type>
+			CLIFF_EDGE
+		</Type>
+
+		<Altitude>Plateau</Altitude>
+
+		<Rarity>100</Rarity>
+
+		<isDefault>0</isDefault>
+
+		<NorthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</NorthEdge>
+
+		<EastEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</EastEdge>
+
+		<SouthEdge>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</SouthEdge>
+
+		<WestEdge>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</WestEdge>
+	</Elevation>
+	
+	<Elevation>
+		<Type>
+			PLAIN
+		</Type>
+
+		<Altitude>Plain</Altitude>
+
+		<Rarity>1</Rarity>
+
+		<isDefault>1</isDefault>
+
+		<NorthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</NorthEdge>
+
+		<EastEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</EastEdge>
+
+		<SouthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</SouthEdge>
+
+		<WestEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</WestEdge>
+	</Elevation>
+
+	<Elevation>
+		<Type>
+			COAST_EDGE
+		</Type>
+
+		<Altitude>Plain</Altitude>
+
+		<Rarity>1</Rarity>
+
+		<isDefault>0</isDefault>
+
+		<NorthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</NorthEdge>
+
+		<EastEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</EastEdge>
+
+		<SouthEdge>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</SouthEdge>
+
+		<WestEdge>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</WestEdge>
+	</Elevation>
+
+	<Elevation>
+		<Type>
+			COAST_MIDDLE
+		</Type>
+
+		<Altitude>Plain</Altitude>
+
+		<Rarity>1</Rarity>
+
+		<isDefault>0</isDefault>
+
+		<NorthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</NorthEdge>
+
+		<EastEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</EastEdge>
+
+		<SouthEdge>
+			<isRising>0</isRising>
+			<isUp>0</isUp>
+		</SouthEdge>
+
+		<WestEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</WestEdge>
+	</Elevation>
+	
+	<Elevation>
+		<Type>
+			WATER
+		</Type>
+
+		<Altitude>Sea</Altitude>
+
+		<Rarity>1</Rarity>
+
+		<isDefault>1</isDefault>
+
+		<NorthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</NorthEdge>
+
+		<EastEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</EastEdge>
+
+		<SouthEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
+		</SouthEdge>
+
+		<WestEdge>
+			<isRising>0</isRising>
+			<isUp>1</isUp>
 		</WestEdge>
 	</Elevation>
 </Elevations>
+

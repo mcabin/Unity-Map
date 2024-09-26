@@ -9,15 +9,24 @@ public class TileNode
     public int gCost;
     public int hCost;
     public int fCost => gCost + hCost;
-    public List<TileNode> tilesNeighbors { get; private set; }
+    private Dictionary<GlobalEnum.Direction, TileNode> neighborsDic;
     public TileNode cameFrom;
     public TileNode(Tile tile)
     {
         this.tile= tile;
-        tilesNeighbors = new List<TileNode>();
+        neighborsDic = new Dictionary<GlobalEnum.Direction,TileNode>();
     }
-    public void addNeighbor(TileNode neighbor)
+    public void addNeighbor(GlobalEnum.Direction dir,TileNode node)
     {
-        tilesNeighbors.Add(neighbor);
+        neighborsDic[dir] = node;
+    }
+
+    public TileNode getNeighbor(GlobalEnum.Direction dir)
+    {
+        if (neighborsDic.TryGetValue(dir, out TileNode value))
+        {
+            return value;
+        }
+        return null;
     }
 }

@@ -11,13 +11,8 @@
         <MaximumAltitude>59</MaximumAltitude>
     </Altitude>
     <Altitude>
-        <Type>Elevation</Type>
+        <Type>Plateau  </Type>
         <MininimumAltitude>60</MininimumAltitude>
-        <MaximumAltitude>89</MaximumAltitude>
-    </Altitude>
-    <Altitude>
-        <Type>Mountain</Type>
-        <MininimumAltitude>90</MininimumAltitude>
         <MaximumAltitude>100</MaximumAltitude>
     </Altitude>
 </Altitudes>

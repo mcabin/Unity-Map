@@ -1,22 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.XPath;
 using UnityEngine;
 
-public class PathFinding
+public class PathFinding:MonoBehaviour
 {
    private TileNode[,] tileMap;
     private int height,width;
 
-    private const int BASE_DIAGONAL_COST = 14;
     private const int BASE_STRAIGHT_COST = 10;
 
-    PathFinding(TileNode[,] map,int height,int width)
+
+    public void Initialize(int width,int height, TileNode[,] listNodes)
     {
-        this.tileMap = map;
-        this.height = height;
-        this.width = width;
+        tileMap = listNodes;
+        this.height=height;
+        this.width=width;
     }
 
     private void resetPathfindingMap()
@@ -25,7 +26,7 @@ public class PathFinding
         {
             for(int h = 0; h < height; h++)
             {
-                TileNode tile = tileMap[w, h];
+                TileNode tile = tileMap[w,h];
                 tile.gCost=int.MaxValue;
                 tile.hCost=int.MaxValue;
                 tile.cameFrom = null;
@@ -34,30 +35,31 @@ public class PathFinding
     }
     //Calcul le cout du mouvement en considérant que les deux cases sont adjacentes
     //Retourne -1 si on ne peut pas voyager entre les 2 cases a cause de l'altitude
-    private int calculteNeighborTravelCost(TileNode start,TileNode target)
+    private int calculteNeighborTravelCost(TileNode start,TileNode target,GlobalEnum.Direction direction)
     {
-        int baseCost = BASE_STRAIGHT_COST;
-        if (start.tile.coordX - target.tile.coordX != 0 && start.tile.coordY - target.tile.coordY != 0)
-            baseCost = BASE_DIAGONAL_COST;
-
-        int cost = target.tile.movementDifficulty;
-        int altitudeDifference = start.tile.altitude.level - target.tile.altitude.level;
-        if (Mathf.Abs(altitudeDifference) >1)
-        {
+        EdgeStruct edgeToCross= start.tile.altitude.elevationType.getEdge(direction);
+        int startAltitudeLvl = start.tile.altitude.level;
+        int targetAltitudeLvl = start.tile.altitude.level;
+        //Corniche infranchisable
+        if (startAltitudeLvl != targetAltitudeLvl && edgeToCross.isUp) { 
             return -1;
         }
-        else 
-            return (int)(baseCost*cost);
+        int cost = target.tile.movementDifficulty;
+        return (int)(BASE_STRAIGHT_COST * cost);
     }
     private int calculateDistanceCost(TileNode start,TileNode target)
     {
-        int distanceHori=Mathf.Abs(start.tile.coordX-target.tile.coordX);
-        int distanceVerti=Mathf.Abs(start.tile.coordY-target.tile.coordX);
-        int remainingDistance=Mathf.Abs(distanceVerti-distanceHori);
-        return Mathf.Min(distanceHori, distanceVerti)*BASE_DIAGONAL_COST+BASE_STRAIGHT_COST*remainingDistance;
+        int distanceHori=Mathf.Abs(start.tile.coordW-target.tile.coordW);
+        int distanceVerti=Mathf.Abs(start.tile.coordH-target.tile.coordW);
+        int remainingDistance=distanceVerti+distanceHori;
+        return BASE_STRAIGHT_COST*remainingDistance;
 
     }
-    public List<TileNode> findPath(TileNode startNode, TileNode endNode)
+
+    public List<TileNode> findPath(int startWCoord,int startHCoord,int endWCoord,int endHCoord) {
+        return findPathWithNode(tileMap[startWCoord, startHCoord], tileMap[endWCoord, endHCoord]);
+    }
+    private List<TileNode> findPathWithNode(TileNode startNode, TileNode endNode)
     {
         resetPathfindingMap();
         List<TileNode> openList = new List<TileNode> { startNode };
@@ -73,20 +75,25 @@ public class PathFinding
             }
             openList.Remove(currentNode);
             closeList.Add(currentNode);
-            foreach(TileNode neighborNode in currentNode.tilesNeighbors)
+            foreach (GlobalEnum.Direction direction in Enum.GetValues(typeof(GlobalEnum.Direction)))
             {
-                if (closeList.Contains(neighborNode)) continue;
-                int calculatePath = calculteNeighborTravelCost(currentNode, neighborNode);
-                if (calculatePath < 0) continue;
-
-                int potentialGCost=currentNode.gCost+ calculatePath;
-                if (neighborNode.gCost > potentialGCost)
+                TileNode neighborNode =currentNode.getNeighbor(direction);
+                if (neighborNode != null)
                 {
-                    neighborNode.gCost = potentialGCost;
-                    neighborNode.cameFrom = currentNode;
-                    neighborNode.hCost=calculateDistanceCost(neighborNode,endNode);
-                    if (!openList.Contains(neighborNode)) {
-                        openList.Add(neighborNode);
+                    if (closeList.Contains(neighborNode)) continue;
+                    int calculatePath = calculteNeighborTravelCost(currentNode, neighborNode,direction);
+                    if (calculatePath < 0) continue;
+
+                    int potentialGCost = currentNode.gCost + calculatePath;
+                    if (neighborNode.gCost > potentialGCost)
+                    {
+                        neighborNode.gCost = potentialGCost;
+                        neighborNode.cameFrom = currentNode;
+                        neighborNode.hCost = calculateDistanceCost(neighborNode, endNode);
+                        if (!openList.Contains(neighborNode))
+                        {
+                            openList.Add(neighborNode);
+                        }
                     }
                 }
             }
@@ -94,10 +101,12 @@ public class PathFinding
         //Aucun chemin trouvé
         return null;
     }
-    public List<TileNode> CalculatePath(TileNode endNode)
+    private List<TileNode> CalculatePath(TileNode endNode)
     {
-        List<TileNode> path= new List<TileNode>();
-        path.Add(endNode);
+        List<TileNode> path= new List<TileNode>
+        {
+            endNode
+        };
         TileNode currentNode = endNode;
         while (currentNode.cameFrom != null) {
             path.Add(currentNode.cameFrom);

@@ -14,8 +14,7 @@ public static class TileEnum
     {
         SEA= 0,
         PLAIN= 1,
-        ELEVATION=2,
-        MOUNTAIN= 3
+        PLATEAU=2
     }
     public enum ElevEnum
     {
@@ -28,11 +27,16 @@ public static class TileEnum
         ELEV_CURVE_EP=6,
         ELEV_CURVE_PE = 7,
         ELEV_CURVE_PP = 8,
-        ELEV_TWO=9,
+        ELEV_BRIDGE=9,
         SOLO_PLATEAU=10,
-        PLAIN =11,
-        PLATEAU= 12,
-        UNKNOW=13
+        CLIFF_MIDDLE=11,
+        CLIFF_EDGE=12,
+        PLATEAU = 13,
+        PLAIN =14,
+        COAST_EDGE=15,
+        COAST_MIDDLE=16,
+        WATER=17,
+        UNKNOW =18,
    
     }
     public enum BiomeEnum
@@ -44,6 +48,6 @@ public static class TileEnum
         JUNGLE= 4,
         SNOWDESERT = 5,
         TAIGA= 6,
-        WATER=7,
+        WATER=7
     }
 }
