@@ -12,7 +12,7 @@ public class PathFinding:MonoBehaviour
 
     private const int BASE_STRAIGHT_COST = 10;
 
-
+    
     public void Initialize(int width,int height, TileNode[,] listNodes)
     {
         tileMap = listNodes;

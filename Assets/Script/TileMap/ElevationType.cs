@@ -11,10 +11,12 @@ public struct EdgeStruct
 {
     public bool isUp;
     public bool isRising;
-    public EdgeStruct(bool isUp,bool isRising)
+    public bool isPraticable;
+    public EdgeStruct(bool isUp,bool isRising,bool isPraticable)
     {
         this.isUp = isUp;
         this.isRising = isRising;
+        this.isPraticable = isPraticable;
     }
 
     public static bool operator ==(EdgeStruct a, EdgeStruct b)
@@ -127,9 +129,10 @@ public class ElevationType
                     EdgeStruct northEdge;
                     if (int.TryParse(elevationXml.SelectSingleNode("NorthEdge").SelectSingleNode("isRising")?.InnerText, out int northIsElev) &&
                         int.TryParse(elevationXml.SelectSingleNode("NorthEdge").SelectSingleNode("isUp")?.InnerText, out int northIsPlateau)
+                        && int.TryParse(elevationXml.SelectSingleNode("NorthEdge").SelectSingleNode("isPraticable")?.InnerText, out int northIsPraticable)
                         )
                     {
-                        northEdge = new EdgeStruct(northIsPlateau > 0, northIsElev > 0);
+                        northEdge = new EdgeStruct(northIsPlateau > 0, northIsElev > 0,northIsPraticable>0);
                     }
                     else
                         throw new Exception("Invalid north for " + elevEnum);
@@ -137,10 +140,12 @@ public class ElevationType
                     //East
                     EdgeStruct eastEdge;
                     if (int.TryParse(elevationXml.SelectSingleNode("EastEdge").SelectSingleNode("isRising")?.InnerText, out int eastIsElev) &&
-                        int.TryParse(elevationXml.SelectSingleNode("EastEdge").SelectSingleNode("isUp")?.InnerText, out int eastIsPlateau)
+                        int.TryParse(elevationXml.SelectSingleNode("EastEdge").SelectSingleNode("isUp")?.InnerText, out int eastIsPlateau)&&
+                        int.TryParse(elevationXml.SelectSingleNode("EastEdge").SelectSingleNode("isPraticable")?.InnerText, out int eastIsPraticable)
+
                         )
                     {
-                        eastEdge = new EdgeStruct(eastIsPlateau > 0, eastIsElev > 0);
+                        eastEdge = new EdgeStruct(eastIsPlateau > 0, eastIsElev > 0,eastIsPraticable>0);
                     }
                     else
                         throw new Exception("Invalid east for " + elevEnum);
@@ -148,10 +153,11 @@ public class ElevationType
                     //south
                     EdgeStruct southEdge;
                     if (int.TryParse(elevationXml.SelectSingleNode("SouthEdge").SelectSingleNode("isRising")?.InnerText, out int southIsElev) &&
-                        int.TryParse(elevationXml.SelectSingleNode("SouthEdge").SelectSingleNode("isUp")?.InnerText, out int southIsPlateau)
+                        int.TryParse(elevationXml.SelectSingleNode("SouthEdge").SelectSingleNode("isUp")?.InnerText, out int southIsPlateau)&&
+                        int.TryParse(elevationXml.SelectSingleNode("SouthEdge").SelectSingleNode("isPraticable")?.InnerText, out int southIsPraticalbe)
                         )
                     {
-                        southEdge = new EdgeStruct(southIsPlateau > 0, southIsElev > 0);
+                        southEdge = new EdgeStruct(southIsPlateau > 0, southIsElev > 0,southIsPraticalbe>0);
                     }
                     else
                         throw new Exception("Invalid south for " + elevEnum);
@@ -159,10 +165,12 @@ public class ElevationType
                     //west
                     EdgeStruct westEdge;
                     if (int.TryParse(elevationXml.SelectSingleNode("WestEdge").SelectSingleNode("isRising")?.InnerText, out int westIsElev) &&
-                        int.TryParse(elevationXml.SelectSingleNode("WestEdge").SelectSingleNode("isUp")?.InnerText, out int westIsPlateau)
+                        int.TryParse(elevationXml.SelectSingleNode("WestEdge").SelectSingleNode("isUp")?.InnerText, out int westIsPlateau)&&
+                        int.TryParse(elevationXml.SelectSingleNode("WestEdge").SelectSingleNode("isPraticable")?.InnerText, out int westIsPraticable)
+
                         )
                     {
-                        westEdge = new EdgeStruct(westIsPlateau > 0, westIsElev > 0);
+                        westEdge = new EdgeStruct(westIsPlateau > 0, westIsElev > 0,westIsPraticable>0);
                     }
                     else
                         throw new Exception("Invalid west for " + elevEnum);

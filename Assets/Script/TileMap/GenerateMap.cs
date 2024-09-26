@@ -346,7 +346,7 @@ public class GenerateMap
             for (int h = 0; h < height; h++)
             {
                 tilesNodes[w, h] = new TileNode(map.getTile(w, h));
-                if (h < 0)
+                if (h > 0)
                 {
                     //North self
                     tilesNodes[w, h].addNeighbor(GlobalEnum.Direction.NORTH,tilesNodes[w, h-1]);
