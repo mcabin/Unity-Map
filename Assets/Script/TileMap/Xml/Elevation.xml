@@ -13,21 +13,26 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 		
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
+
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 		
 	</Elevation>
@@ -44,21 +49,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -75,21 +84,26 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
+
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -106,21 +120,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -137,21 +155,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -168,21 +190,25 @@
 		<NorthEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -200,21 +226,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -233,21 +263,25 @@
 		<NorthEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>1</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -265,21 +299,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -297,21 +335,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 	
@@ -327,21 +369,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>1</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>1</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 	
@@ -357,21 +403,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -389,21 +439,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>0</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -421,21 +475,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>0</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>0</isPraticable>
 		</WestEdge>
 	</Elevation>
 	
@@ -453,21 +511,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -485,21 +547,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>0</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>0</isPraticable>
 		</WestEdge>
 	</Elevation>
 
@@ -517,21 +583,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>0</isUp>
+			<isPraticable>0</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 	
@@ -549,21 +619,25 @@
 		<NorthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</NorthEdge>
 
 		<EastEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</EastEdge>
 
 		<SouthEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</SouthEdge>
 
 		<WestEdge>
 			<isRising>0</isRising>
 			<isUp>1</isUp>
+			<isPraticable>1</isPraticable>
 		</WestEdge>
 	</Elevation>
 </Elevations>
