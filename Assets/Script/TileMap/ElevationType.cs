@@ -195,7 +195,7 @@ public class ElevationType
     {
         if(edgesDic.TryGetValue(direction, out EdgeStruct edge)) 
             return edge;
-        return new EdgeStruct(true,true);
+        return new EdgeStruct(true,true,false);
     }
 
     public static ElevationType get(TileEnum.ElevEnum key) {
@@ -213,7 +213,7 @@ public class ElevationType
 
     public static ElevationType getUnknow(TileEnum.AltitudeEnum altitude)
     {
-        EdgeStruct edge=new EdgeStruct(true, true);
+        EdgeStruct edge=new EdgeStruct(true, true,false);
         return new ElevationType(TileEnum.ElevEnum.UNKNOW, edge, edge, edge, edge, 0, 1,altitude, false);
     }
 }

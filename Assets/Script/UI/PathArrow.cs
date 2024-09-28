@@ -27,7 +27,7 @@ public class PathArrow : MonoBehaviour
                 for (int i = 0; i < path.Count; i++)
                 {
                     TileNode node = path[i];
-                    lineRenderer.SetPosition(i, MapViewAsset.getTilePosition(node.tile.coordW, node.tile.coordH, 2));
+                    lineRenderer.SetPosition(i, MapViewAsset.getTilePosition(node.tile.coordW, node.tile.coordH, 1));
                 }
             }
             

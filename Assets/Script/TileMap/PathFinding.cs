@@ -38,10 +38,10 @@ public class PathFinding:MonoBehaviour
     private int calculteNeighborTravelCost(TileNode start,TileNode target,GlobalEnum.Direction direction)
     {
         EdgeStruct edgeToCross= start.tile.altitude.elevationType.getEdge(direction);
-        int startAltitudeLvl = start.tile.altitude.level;
-        int targetAltitudeLvl = start.tile.altitude.level;
+        EdgeStruct edgeTarget = target.tile.altitude.elevationType.getEdge(GlobalEnum.inverseDirection(direction));
+
         //Corniche infranchisable
-        if (startAltitudeLvl != targetAltitudeLvl && edgeToCross.isUp) { 
+        if (!edgeToCross.isPraticable||!edgeTarget.isPraticable) { 
             return -1;
         }
         int cost = target.tile.movementDifficulty;

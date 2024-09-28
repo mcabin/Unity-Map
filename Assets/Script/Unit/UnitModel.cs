@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class UnitModel
 {
-    private int life;
-    private int speed;
+    public int life;
+    public int speed;
     private int coordW, coordH;
+    UnitType type;
 
     public UnitModel(int life, int speed, int coordW, int coordH)
     {
