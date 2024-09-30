@@ -1,3 +1,4 @@
+using Assets.Script;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ public class PathFinding:MonoBehaviour
                 tile.gCost=int.MaxValue;
                 tile.hCost=int.MaxValue;
                 tile.cameFrom = null;
+                tile.isClosed = false;
+                tile.isInList = false;
             }
         }
     }
@@ -62,37 +65,48 @@ public class PathFinding:MonoBehaviour
     private List<TileNode> findPathWithNode(TileNode startNode, TileNode endNode)
     {
         resetPathfindingMap();
-        List<TileNode> openList = new List<TileNode> { startNode };
-        List<TileNode> closeList = new List<TileNode>();
+        BinaryHeap openList = new BinaryHeap(width*height) ;
         startNode.gCost = 0;
         startNode.hCost = calculateDistanceCost(startNode, endNode);
+        openList.Add(startNode);
         while (openList.Count > 0)
         {
-            TileNode currentNode = GetLowestFCostNode(openList);
+            TileNode currentNode = openList.ExtractMin();
+            currentNode.isClosed = true;
             if (currentNode == endNode)
             {
                 return CalculatePath(currentNode);
             }
-            openList.Remove(currentNode);
-            closeList.Add(currentNode);
             foreach (GlobalEnum.Direction direction in Enum.GetValues(typeof(GlobalEnum.Direction)))
             {
                 TileNode neighborNode =currentNode.getNeighbor(direction);
                 if (neighborNode != null)
                 {
-                    if (closeList.Contains(neighborNode)) continue;
+                    if (neighborNode.isClosed) continue;
                     int calculatePath = calculteNeighborTravelCost(currentNode, neighborNode,direction);
-                    if (calculatePath < 0) continue;
-
+                    if (calculatePath < 0)
+                    {
+                        neighborNode.isClosed = true;
+                        continue;
+                    };
+                    int oldFCost = neighborNode.fCost;
                     int potentialGCost = currentNode.gCost + calculatePath;
                     if (neighborNode.gCost > potentialGCost)
                     {
                         neighborNode.gCost = potentialGCost;
                         neighborNode.cameFrom = currentNode;
                         neighborNode.hCost = calculateDistanceCost(neighborNode, endNode);
-                        if (!openList.Contains(neighborNode))
+                        if (!neighborNode.isInList)
                         {
+                            neighborNode.isInList = true;
                             openList.Add(neighborNode);
+                        }
+                        else
+                        {
+                            if(oldFCost > neighborNode.fCost)
+                            {
+                                openList.DecreasePriority(neighborNode);
+                            }
                         }
                     }
                 }

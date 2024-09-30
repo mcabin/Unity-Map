@@ -1,13 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class TileNode 
+public class TileNode : IComparable<TileNode>
 {
     public Tile tile{get;private set;}
     //A star
     public int gCost;
     public int hCost;
+
+    public bool isInList;
+    public bool isClosed;
+
+    public int positionInHeap;
     public int fCost => gCost + hCost;
     private Dictionary<GlobalEnum.Direction, TileNode> neighborsDic;
     public TileNode cameFrom;
@@ -28,5 +34,10 @@ public class TileNode
             return value;
         }
         return null;
+    }
+
+    public int CompareTo(TileNode other)
+    {
+        return fCost.CompareTo(other.fCost);
     }
 }

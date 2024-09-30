@@ -340,7 +340,7 @@ public class GenerateMap
 
     public TileNode[,] createListOfTileNode()
     {
-        TileNode[,] tilesNodes = new TileNode[height, width];
+        TileNode[,] tilesNodes = new TileNode[width,height];
         for (int w = 0; w < width; w++)
         {
             for (int h = 0; h < height; h++)
