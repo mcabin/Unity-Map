@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ColorList 
+namespace Assets.Script
 {
-    private static readonly Dictionary<TileEnum.BiomeEnum, Color> biomeColors = new Dictionary<TileEnum.BiomeEnum, Color> {
+    public static class ColorList
+    {
+        private static readonly Dictionary<TileEnum.BiomeEnum, Color> biomeColors = new Dictionary<TileEnum.BiomeEnum, Color> {
         {TileEnum.BiomeEnum.GRASSLAND,createColor(43, 128, 24) },
         {TileEnum.BiomeEnum.SWAMP,createColor(38, 117, 72) },
         {TileEnum.BiomeEnum.DESERT,createColor(222, 209, 98) },
@@ -15,20 +17,21 @@ public static class ColorList
         {TileEnum.BiomeEnum.WATER,createColor(20,50,200) }
     };
 
-    private static Color createColor(int r,int g,int b)
-    {
-        return new Color((float)r /255, (float)g /255,(float)b/255);
-    }
-
-    public static Color getBiomeColor(TileEnum.BiomeEnum biomeEnum)
-    {
-        if(biomeColors.TryGetValue(biomeEnum, out Color value))
+        private static Color createColor(int r, int g, int b)
         {
-            return value;
+            return new Color((float)r / 255, (float)g / 255, (float)b / 255);
         }
-        else
+
+        public static Color getBiomeColor(TileEnum.BiomeEnum biomeEnum)
         {
-            return biomeColors[TileEnum.BiomeEnum.GRASSLAND];
+            if (biomeColors.TryGetValue(biomeEnum, out Color value))
+            {
+                return value;
+            }
+            else
+            {
+                return biomeColors[TileEnum.BiomeEnum.GRASSLAND];
+            }
         }
     }
 }

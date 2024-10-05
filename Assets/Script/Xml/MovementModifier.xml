@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MovementModifiers>
+	<MovementModifier>
+		<Name>PlainWalker</Name>
+		<MovementCapacity>1</MovementCapacity>
+		<BiomeCosts>
+			
+			<BiomeCost>
+				<Biome>Plain</Biome>
+				<Cost>0.5</Cost>
+			</BiomeCost>
+			
+		</BiomeCosts>
+	</MovementModifier>
+	
+	<MovementModifier>
+		<Name>HumidExpert</Name>
+		<MovementCapacity>1</MovementCapacity>
+		<BiomeCosts>
+			
+			<BiomeCost>
+				<Biome>Swamp</Biome>
+				<Cost>0.5</Cost>
+			</BiomeCost>
+			
+			<BiomeCost>
+				<Biome>Jungle</Biome>
+				<Cost>0.5</Cost>
+			</BiomeCost>
+			
+		</BiomeCosts>
+	</MovementModifier>
+</MovementModifiers>

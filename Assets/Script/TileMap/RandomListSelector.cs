@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
-public class RandomListSelector
+namespace Assets.Script
 {
-    
-        private System.Random random ;
 
-    public RandomListSelector(int seed)
+    public class RandomListSelector
     {
-        random = new System.Random(seed);
-    }
+
+        private System.Random random;
+
+        public RandomListSelector(int seed)
+        {
+            random = new System.Random(seed);
+        }
 
         public T SelectWeighted<T>(IEnumerable<T> items, Func<T, int> weightSelector)
         {
@@ -30,5 +32,6 @@ public class RandomListSelector
             // Cela ne devrait jamais arriver, mais c'est une bonne pratique de le gérer
             throw new InvalidOperationException("Aucun élément sélectionné");
         }
-    
+
+    }
 }

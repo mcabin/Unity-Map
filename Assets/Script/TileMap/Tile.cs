@@ -4,38 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-[System.Serializable]
-public class Tile
-{
-    public BiomeType biome;
-    public List<TileFeature> features;
-    public int coordW, coordH;
-    public AltitudeType altitude;
-    public int movementDifficulty { get; private set; }
-    
-    public Tile()
+
+namespace Assets.Script {
+    [System.Serializable]
+    public class Tile
     {
+        public BiomeType biome;
+        public List<TileFeature> features;
+        public int coordW, coordH;
+        public AltitudeType altitude;
+        public Tile()
+        {
 
-    }
-    public Tile(BiomeType biome,int coordW,int coordH,AltitudeType altitude)
-    {
+        }
+        public Tile(BiomeType biome, int coordW, int coordH, AltitudeType altitude)
+        {
 
-        //Biome
-        this.biome= biome;
+            //Biome
+            this.biome = biome;
 
-        this.coordW = coordW;
-        this.coordH = coordH;
+            this.coordW = coordW;
+            this.coordH = coordH;
 
-        this.altitude = altitude;
-        setMovementDifficulty();
-    }
-    
-    //CALL WHEN CHANGING THE BIOME OR FEATURE
-    public void setMovementDifficulty()
-    {
-        float movDiff = biome.movDifficulty;
+            this.altitude = altitude;
+        }
 
-        movementDifficulty =(int) Math.Round(movDiff);
+        public float calculateMovementCost(Unit unit)
+        {
+            float biomeCost = biome.movDifficulty * unit.movementCoastByBiome[biome.type];
+            return biomeCost;
+        }
     }
 }
-
