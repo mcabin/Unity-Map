@@ -9,7 +9,13 @@ namespace Assets.Script
         {
             //MovementModifierHaveTheTag 1
             CRIPPLED=1,
-            JUNGLE_EXPERT=1
+            PLAIN_WALKER=1
+        }
+
+        public enum ClassEnum
+        {
+            MANATARMS=0,
+            HORSEMAN=1
         }
     }
 }

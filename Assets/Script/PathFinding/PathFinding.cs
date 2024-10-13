@@ -14,12 +14,26 @@ namespace Assets.Script
 
         private const int BASE_STRAIGHT_COST = 10;
 
+        private static PathFinding _instance;
+        public static PathFinding Instance { get { return _instance; } }
 
-        public void Initialize(int width, int height, TileNode[,] listNodes)
+        private void Awake()
         {
-            tileMap = listNodes;
-            this.height = height;
-            this.width = width;
+            if (_instance != null && _instance != this)
+            {
+                Destroy(_instance);
+            }
+            else
+            {
+                _instance = this;
+            }
+        }
+
+        public static void Initialize(int width, int height, TileNode[,] listNodes)
+        {
+            _instance.tileMap = listNodes;
+            _instance.height = height;
+            _instance.width = width;
         }
 
         private void resetPathfindingMap()
@@ -61,10 +75,10 @@ namespace Assets.Script
 
         }
 
-        public List<TileNode> findPath(Unit startUnit, int endWCoord, int endHCoord)
+        public FoundPath findPath(Unit startUnit, int endWCoord, int endHCoord)
         {
             
-            return findPathWithNode(tileMap[startUnit.getPosition().w, startUnit.getPosition().h], tileMap[endWCoord, endHCoord],startUnit);
+            return new FoundPath(findPathWithNode(tileMap[startUnit.getPosition().w, startUnit.getPosition().h], tileMap[endWCoord, endHCoord],startUnit));
         }
         private List<TileNode> findPathWithNode(TileNode startNode, TileNode endNode,Unit unit)
         {

@@ -3,19 +3,20 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class SelectableObject : MonoBehaviour
+    public class SelectableComponent : MonoBehaviour
     {
-        protected bool isSelected=false ;
 
-        public virtual void Select()
+        public bool isSelected { get; private set; }
+
+        public virtual void  Select()
         {
             isSelected = true;
         }
 
-        public virtual void Deselect() {
+        public virtual void Deselect()
+        {
             isSelected = false;
         }
-        // Use this for initialization
         void Start()
         {
 

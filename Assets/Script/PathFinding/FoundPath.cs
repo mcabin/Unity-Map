@@ -31,7 +31,12 @@ namespace Assets.Script
 
         private void transformTileNodeInSimpleNode(List<TileNode> tileNodes)
         {
+            
             path=new List<SimpleNode>();
+            if (tileNodes == null)
+            {
+                return;
+            }
             int totalCost=0;
             foreach (var tileNode in tileNodes)
             {
