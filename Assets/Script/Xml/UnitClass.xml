@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UnitClasses>
+    <UnitClass>
+        <Name>Villager</Name>
+        <Health>10</Health>
+        <Movement>3</Movement>
+        <Modifiers>
+            
+        </Modifiers>
+    </UnitClass>
+    <UnitClass>
+        <Type>Horseman</Type>
+        <Health>15</Health>
+        <Movement>5</Movement>
+        <Modifiers>
+            <Modifier>Plain_Walker</Modifier>
+        </Modifiers>
+    </UnitClass>
+</UnitClasses>

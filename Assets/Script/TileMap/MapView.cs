@@ -10,13 +10,12 @@ namespace Assets.Script
         public int mapWidth, mapHeight = 10;
         public int altitudeScale, temperatureModifier, moistureModifier = 1;
         public int seed;
-        public PathFinding pathfinding;
         // Start is called before the first frame update
         void Start()
         {
             GenerateMap generator = new GenerateMap(mapWidth, mapHeight, altitudeScale, seed, temperatureModifier, moistureModifier);
             mapModel = generator.generateTilesMap();
-            pathfinding.Initialize(mapWidth, mapHeight, generator.createListOfTileNode());
+             PathFinding.Initialize(mapWidth, mapHeight, generator.createListOfTileNode());
 
             for (int h = 0; h < mapHeight; h++)
             {

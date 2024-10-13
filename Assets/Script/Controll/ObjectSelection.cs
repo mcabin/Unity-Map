@@ -29,10 +29,10 @@ namespace Assets.Script
         {
             if(selectedObjects != null)
             {
-                selectedObjects.deselect();
+                selectedObjects.Deselect();
 
             }
-            obj.select();
+            obj.Select();
             selectedObjects = obj;
             
         }
@@ -41,7 +41,7 @@ namespace Assets.Script
         {
             if(selectedObjects != null)
             {
-                selectedObjects.deselect();
+                selectedObjects.Deselect();
             }
             selectedObjects = null;
         }

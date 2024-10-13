@@ -20,6 +20,10 @@ namespace Assets.Script
             this.biomesCostsDictionary = biomeCosts;
         }
 
+        static UnitMovementModifier()
+        {
+            initialize();  
+        }
         public override void applyModifier(Unit unit)
         {
             foreach(KeyValuePair< TileEnum.BiomeEnum,float> biomeCost in biomesCostsDictionary)
@@ -52,10 +56,10 @@ namespace Assets.Script
                 if (Enum.TryParse<UnitEnum.ModifierEnum>(nameStr, true, out UnitEnum.ModifierEnum modifierEnum))
                 {
                     Dictionary<TileEnum.BiomeEnum, float> newDictionary = new Dictionary<TileEnum.BiomeEnum, float>();
-                    XmlNodeList biomesCostsXML = movModifierXML.SelectNodes("//BiomeCosts");
+                    XmlNodeList biomesCostsXML = movModifierXML.SelectNodes("//BiomeCost");
                     foreach(XmlNode biomeCostXML in biomesCostsXML)
                     {
-                        if (int.TryParse(biomeCostXML.SelectSingleNode("Cost")?.InnerText, out int cost) &&
+                        if (float.TryParse(biomeCostXML.SelectSingleNode("Cost")?.InnerText, out float cost) &&
                             Enum.TryParse<TileEnum.BiomeEnum>(biomeCostXML.SelectSingleNode("Biome")?.InnerText, true, out TileEnum.BiomeEnum biomeEnum)
                         )
                         {
@@ -70,6 +74,9 @@ namespace Assets.Script
                 }
                 else throw new Exception("Enum doesn't exist for " + nameStr);
             }
+        }
+        private static UnitMovementModifier getModifier(UnitEnum.ModifierEnum key){
+            return allMovementModifiers[key];
         }
     }
 }

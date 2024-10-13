@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MovementModifiers>
 	<MovementModifier>
-		<Name>PlainWalker</Name>
+		<Name>Plain_Walker</Name>
 		<MovementCapacity>1</MovementCapacity>
 		<BiomeCosts>
 			
@@ -12,9 +12,18 @@
 			
 		</BiomeCosts>
 	</MovementModifier>
-	
+
 	<MovementModifier>
-		<Name>HumidExpert</Name>
+		<Name>Crippled</Name>
+		<MovementCapacity>0.5</MovementCapacity>
+
+		<BiomeCosts>
+			
+		</BiomeCosts>
+	</MovementModifier>
+
+	<MovementModifier>
+		<Name>Humid_Expert</Name>
 		<MovementCapacity>1</MovementCapacity>
 		<BiomeCosts>
 			

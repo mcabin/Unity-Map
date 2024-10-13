@@ -12,7 +12,7 @@ namespace Assets.Script
         public Tile tile;
         GameObject model;
         private bool isSelected;
-
+        public static event Action<TileView> OnMouseOverTile;
         public void Select()
         {
             isSelected = true;
@@ -43,6 +43,7 @@ namespace Assets.Script
             this.name = "Tile " + tile.coordW + ", " + tile.coordH;
         }
 
+        
 
         private void createCollider()
         {
@@ -64,6 +65,13 @@ namespace Assets.Script
                 collider.size = new Vector3(colliderHeightSize, 0.18f, colliderHeightSize);
                 collider.center = new Vector3(0, -0.31f, 0);
 
+            }
+        }
+        private void OnMouseEnter()
+        {
+            if (tile != null)
+            {
+                OnMouseOverTile?.Invoke(this);
             }
         }
     }

@@ -1,15 +1,20 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Script
 {
     public class TileSelection : MonoBehaviour
     {
+        private Camera myCamera;
+        public LayerMask groundable;
         public TileView tileSelected;
-
+        public static event Action isUpdated;
         private static TileSelection _instance;
 
         public static TileSelection Instance { get { return _instance;  } }
+
+
 
         private void Awake()
         {
@@ -20,6 +25,7 @@ namespace Assets.Script
             else
             {
                 _instance = this;
+                TileView.OnMouseOverTile += Select;
             }
         }
 
@@ -31,9 +37,10 @@ namespace Assets.Script
             }
             tile.Select();
             tileSelected = tile;
-        }
+            isUpdated?.Invoke();
+    }
 
-        public void Deselect()
+    public void Deselect()
         {
             tileSelected.DeSelect();
         }

@@ -5,62 +5,60 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class UnitMovementComponent : SelectableObject
+    public class UnitMovementComponent : SelectableComponent
     {
         private Unit unit;
-        public PathFinding pathFinding;
         private FoundPath currentPath;
-        public PathArrow arrow;
+        private PathArrow arrow;
+        
 
-
-        public override void select()
+        public override void Select()
         {
-            base.select();
+            base.Select();
             arrow.Activate();
+            TileSelection.isUpdated+=tileIsUpdated;
         }
 
-        public override void deselect()
+        public override void Deselect()
         {
-            base.deselect();
+            base.Deselect();
             arrow.Deactivate();
+            TileSelection.isUpdated -= tileIsUpdated;
         }
 
-        void Initialise(Unit unit,PathFinding pathFinding)
+        public void Initialize(Unit unit)
         {
-           this.pathFinding = pathFinding;
            this.unit = unit;
         }
         // Use this for initialization
         void Start()
         {
-            PathArrow arrow=this.AddComponent<PathArrow>();
+            arrow=this.AddComponent<PathArrow>();
         }
-
+        
         // Update is called once per frame
         void Update()
         {
-            move();
+            if (isSelected)
+            {
+                move();
+            }
         }
-
+        
         private void move()
         {
             if (Input.GetMouseButtonDown((int)MouseButton.Right))
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ground")))
-                {
-                    TileView obj = hit.collider.GetComponent<TileView>();
-                    if (obj != null)
-                    {
-                        
-                        List<TileNode> listNode = pathFinding.findPath(unit, obj.tile.coordW, obj.tile.coordH);
-                        currentPath=new FoundPath(listNode);
-                    }
-
-                }
                 
             }
+        }
+
+        private void tileIsUpdated()
+        {
+            TileView tile = TileSelection.Instance.tileSelected;
+            Debug.Log(tile.tile.coordW + " " + tile.tile.coordH);
+            currentPath = PathFinding.Instance.findPath(unit, tile.tile.coordW, tile.tile.coordH);
+            arrow.changePath(currentPath);
         }
     }
 }
