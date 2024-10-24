@@ -264,7 +264,7 @@ namespace Assets.Script
                     }
 
                     BiomeType biome = retrieveBiomeType(temperatureTab[w, h], altitude, moisture);
-                    Tile newTile = new Tile(biome, w, h, altitudeTab[w, h]);
+                    Tile newTile = new Tile(biome, w, h, altitudeTab[w, h], biome.getFeatures(seed));
                     if (altitude.isRising)
                     {
                         updateNeighboorsElev(ElevationType.getUnknow(altitude.type), altitudeTab, w, h);

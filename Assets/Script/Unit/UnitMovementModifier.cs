@@ -9,14 +9,17 @@ namespace Assets.Script
 {
     public class UnitMovementModifier : UnitModifier
     {
-        public UnitEnum.ModifierEnum type { get; private set; }
-        private float movementCapacityModifier;
+        private float movementCapacityBase;
+        private float movementCapacityMultiplicator;
+        private float movementCapacityBonus;
         private Dictionary<TileEnum.BiomeEnum, float> biomesCostsDictionary;
 
-        public UnitMovementModifier(UnitEnum.ModifierEnum type, float movementCapacityModifier, Dictionary<TileEnum.BiomeEnum, float> biomeCosts)
+        public UnitMovementModifier(UnitEnum.ModifierEnum type, float movementCapacityBase,float movementCapacityMultiplicator,float movementCapacityBonus, Dictionary<TileEnum.BiomeEnum, float> biomeCosts)
+        :base(type)
         {
-            this.type = type;
-            this.movementCapacityModifier = movementCapacityModifier;
+            this.movementCapacityBonus = movementCapacityBonus;
+            this.movementCapacityBase = movementCapacityBase;
+            this.movementCapacityMultiplicator = movementCapacityMultiplicator;
             this.biomesCostsDictionary = biomeCosts;
         }
 
@@ -30,24 +33,15 @@ namespace Assets.Script
             {
                 unit.movementCoastByBiome[biomeCost.Key] *= biomeCost.Value;
             }
-            unit.movementCapacity *= movementCapacityModifier;
+            unit.movementCapacity.changeMultiplicator(movementCapacityMultiplicator);
+            unit.movementCapacity.changeBase(movementCapacityBase);
+            unit.movementCapacity.changeBonus(movementCapacityBonus);
 
         }
 
-        public override void removeModifier(Unit unit)
-        {
-            foreach (KeyValuePair<TileEnum.BiomeEnum, float> biomeCost in biomesCostsDictionary)
-            {
-                unit.movementCoastByBiome[biomeCost.Key] /= biomeCost.Value;
-            }
-            unit.movementCapacity /= movementCapacityModifier;
-        }
-
-        static private Dictionary<UnitEnum.ModifierEnum, UnitMovementModifier> allMovementModifiers;
         private static void initialize()
         {
             XmlDocument xmlDoc = new XmlDocument();
-            allMovementModifiers = new Dictionary<UnitEnum.ModifierEnum, UnitMovementModifier>();
             xmlDoc.Load(XMLAsset.getPathXml("MovementModifier.xml"));
             XmlNodeList movModifiersXML = xmlDoc.SelectNodes("//MovementModifier");
             foreach (XmlNode movModifierXML in movModifiersXML)
@@ -67,16 +61,18 @@ namespace Assets.Script
                         }
                         else throw new Exception("Invalid Biome Cost");
                     }
-                    if(int.TryParse(movModifierXML.SelectSingleNode("MovementCapacity")?.InnerText, out int moveCapacity)){
-                        allMovementModifiers.Add(modifierEnum, new UnitMovementModifier(modifierEnum, moveCapacity, newDictionary));
+                    if(int.TryParse(movModifierXML.SelectSingleNode("MovementCapacity").SelectSingleNode("Base")?.InnerText, out int baseMovement)&&
+                        int.TryParse(movModifierXML.SelectSingleNode("MovementCapacity").SelectSingleNode("Bonus")?.InnerText, out int bonusMovement)&&
+                        int.TryParse(movModifierXML.SelectSingleNode("MovementCapacity").SelectSingleNode("Multiplicator")?.InnerText, out int multiplicator))
+                    {
+
+                        addToDictionary( new UnitMovementModifier(modifierEnum, baseMovement,multiplicator,bonusMovement, newDictionary));
                     }
                     else throw new Exception("Invalid move Capacity");
                 }
                 else throw new Exception("Enum doesn't exist for " + nameStr);
             }
         }
-        private static UnitMovementModifier getModifier(UnitEnum.ModifierEnum key){
-            return allMovementModifiers[key];
-        }
+
     }
 }

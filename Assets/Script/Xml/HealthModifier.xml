@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HealthModifiers>
+	<HealthModifier>
+		<Name>No_Armor</Name>
+		<Base>3</Base>
+		<Bonus>0</Bonus>
+		<Multiplicator>1</Multiplicator>
+	</HealthModifier>
+    
+    <HealthModifier>
+		<Name>Light_Armor</Name>
+		<Base>5</Base>
+		<Bonus>0</Bonus>
+		<Multiplicator>1</Multiplicator>
+	</HealthModifier>
+
+	<HealthModifier>
+		<Name>Heavy_Armor</Name>
+		<Base>1</Base>
+		<Bonus>10</Bonus>
+		<Multiplicator>1.4</Multiplicator>
+	</HealthModifier>
+
+	<HealthModifier>
+		<Name>Medium_Armor</Name>
+		<Base>8</Base>
+		<Bonus>0</Bonus>
+		<Multiplicator>1</Multiplicator>
+	</HealthModifier>
+</HealthModifiers>

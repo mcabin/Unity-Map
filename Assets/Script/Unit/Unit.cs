@@ -6,20 +6,55 @@ using static Assets.Script.UnitEnum;
 
 namespace Assets.Script
 {
+
+    public struct UnitData
+    {
+        private float baseData;
+        private float multiplicator;
+        private float bonus;
+        public float health { get; private set; }
+
+        private void updateHealth()
+        {
+            health = (baseData * multiplicator) + bonus;
+        }
+        public void changeBase(float change)
+        {
+            baseData += change;
+            updateHealth();
+        }
+        public void changeMultiplicator(float change)
+        {
+            multiplicator = multiplicator * change;
+            updateHealth();
+        }
+        public void changeBonus(float change)
+        {
+            bonus += change;
+            updateHealth();
+        }
+
+        public void reset()
+        {
+            baseData = 1.0f;
+            multiplicator = 1.0f;
+            bonus = 0;
+            updateHealth();
+        }
+    }
     public class Unit
     {
-        public int currentHealth { get; private set; }
-
+        public UnitData maxHealth { get; private set; }
+        public float currentHealth { get; private set; }
+        public UnitData movementCapacity { get; private set; }
         
-        public int maxHealth { get; private set; }
         private int coordW, coordH;
 
         public Dictionary<TileEnum.BiomeEnum, float> movementCoastByBiome;
         private HashSet<UnitEnum.ModifierEnum> modifiers;
-        public float movementCapacity;
         private List<UnitClass> unitClasses;
 
-        private void InitializeBaseMovementCoast()
+        private void initializeBaseMovementCoast()
         {
             foreach(TileEnum.BiomeEnum biome in Enum.GetValues(typeof(TileEnum.BiomeEnum)))
             {
@@ -32,7 +67,7 @@ namespace Assets.Script
             this.coordH = coordH;
             unitClasses = new List<UnitClass>();
             addClass(baseClass);
-            InitializeBaseMovementCoast();
+            initializeBaseMovementCoast();
             
         }
 
@@ -41,53 +76,40 @@ namespace Assets.Script
             unitClasses.Add(unitClass);
             foreach(UnitEnum.ModifierEnum modifierEnum in unitClass.modifiers)
             {
-                addModifier(modifierEnum);
+                addModifier(modifierEnum,false);
             }
-            recalculateHealth();
+            applyAllModifiers();
         }
 
-        private void recalculateHealth()
-        {
-            int newHealth = 0;
-            int divide = 0;
-            foreach(UnitClass unitClass in unitClasses)
-            {
-                divide++;
-                newHealth += unitClass.defaultHealth;
-            }
-            maxHealth=newHealth/divide;
-        }
-        private void addModifier(UnitEnum.ModifierEnum modifierEnum)
+        
+        public void addModifier(UnitEnum.ModifierEnum modifierEnum,bool applyNow=true)
         {
             modifiers.Add(modifierEnum);
-            UnitModifier.applyWithKey(this, modifierEnum);
+            if (applyNow)
+            {
+                applyAllModifiers();
+            }
         }
 
         private void applyAllModifiers()
         {
+            resetAllModifiers();
             foreach(UnitEnum.ModifierEnum modifierEnum in modifiers)
             {
                 UnitModifier.applyWithKey(this, modifierEnum);
             }
         }
-
-        private void removeAllModifiers()
-        {
-            resetAllModifiers();
-            modifiers.Clear();
-        }
         private void resetAllModifiers()
         {
-            foreach (UnitEnum.ModifierEnum modifierEnum in modifiers)
-            {
-                UnitModifier.removeWithKey(this, modifierEnum);
-            }
+            maxHealth.reset();
+            movementCapacity.reset();
+            initializeBaseMovementCoast();
         }
 
         private void removeOneModifier(UnitEnum.ModifierEnum modifEnum)
         {
             modifiers.Remove(modifEnum);
-            UnitModifier.removeWithKey(this, modifEnum);
+            applyAllModifiers();
         }
         public void move(int w, int h)
         {

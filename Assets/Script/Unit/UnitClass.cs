@@ -8,16 +8,12 @@ namespace Assets.Script
 {
     public class UnitClass
     {
-        public int defaultHealth { get; private set; }
-        public float defaultMovement { get; private set; }
         public List< UnitEnum.ModifierEnum > modifiers { get; private set; }
 
         public UnitEnum.ClassEnum type { get; private set; }
 
-        public UnitClass(int defaultHealth, float defaultMovement, List<UnitEnum.ModifierEnum> modifiers, UnitEnum.ClassEnum type)
+        public UnitClass(List<UnitEnum.ModifierEnum> modifiers, UnitEnum.ClassEnum type)
         {
-            this.defaultHealth = defaultHealth;
-            this.defaultMovement = defaultMovement;
             this.modifiers = modifiers;
             this.type = type;
         }
@@ -35,7 +31,7 @@ namespace Assets.Script
                 if (Enum.TryParse<UnitEnum.ClassEnum>(name, true, out UnitEnum.ClassEnum classEnum))
                 {
                     List<UnitEnum.ModifierEnum> modifierList = new List<UnitEnum.ModifierEnum>();
-                    XmlNodeList modifiersXML = classXML.SelectNodes("//Modifier");
+                    XmlNodeList modifiersXML = classXML.SelectNodes("./Modifier");
                     foreach (XmlNode modifierXML in modifiersXML)
                     {
                         if (Enum.TryParse<UnitEnum.ModifierEnum>(modifierXML?.InnerText, true, out UnitEnum.ModifierEnum modifierEnum)
@@ -46,12 +42,7 @@ namespace Assets.Script
                         }
                         else throw new Exception("Invalid Modifier"+ modifierXML?.InnerText);
                     }
-                    if (int.TryParse(classXML.SelectSingleNode("Health")?.InnerText, out int defaultHealth) &&
-                        float.TryParse(classXML.SelectSingleNode("Movement")?.InnerText, out float defaultMovement))
-                    {
-                        allUnitClasses.Add(classEnum,new UnitClass(defaultHealth,defaultMovement,modifierList,classEnum));
-                    }
-                    else throw new Exception("Invalid move Capacity");
+                    allUnitClasses.Add(classEnum,new UnitClass(modifierList,classEnum));
                 }
                 else throw new Exception("Enum doesn't exist for " + name);
             }

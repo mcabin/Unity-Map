@@ -15,6 +15,11 @@
 		<MaxSpawnAltitude>0</MaxSpawnAltitude>
 		<MinSpawnMoisture>0</MinSpawnMoisture>
 		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+		<BaseFeatureProba>0</BaseFeatureProba>
+		<MaxFeaturesNb>0</MaxFeaturesNb>
+		<PossibleFeatures>
+		</PossibleFeatures>
+
 	</Biome>
 	<!--Temperate biome-->
     <Biome>
@@ -26,6 +31,19 @@
         <MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>0</MinSpawnMoisture>
 		<MaxSpawnMoisture>7</MaxSpawnMoisture>
+		
+		<BaseFeatureProba>0.4</BaseFeatureProba>
+		<MaxFeaturesNb>2</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Forest</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+			<PossibleFeature>
+				<Feature>Rock</Feature>
+				<Rarity>5</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
     </Biome>
 	<Biome>
 		<Type>Swamp</Type>
@@ -36,6 +54,15 @@
 		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>8</MinSpawnMoisture>
 		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+
+		<BaseFeatureProba>0.3</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Forest</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
 	</Biome>
 	<!--Hot biome-->
     <Biome>
@@ -47,6 +74,15 @@
         <MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>0</MinSpawnMoisture>
 		<MaxSpawnMoisture>2</MaxSpawnMoisture>
+
+		<BaseFeatureProba>0.3</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Rock</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
     </Biome>
 	<Biome>
 		<Type>Savanna</Type>
@@ -57,6 +93,15 @@
 		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>3</MinSpawnMoisture>
 		<MaxSpawnMoisture>6</MaxSpawnMoisture>
+
+		<BaseFeatureProba>0.2</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Forest</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
 	</Biome>
 	<Biome>
 		<Type>Jungle</Type>
@@ -67,6 +112,15 @@
 		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>7</MinSpawnMoisture>
 		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+
+		<BaseFeatureProba>0.3</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Forest</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
 	</Biome>
 	<!--Cold biome-->
     <Biome>
@@ -78,6 +132,15 @@
         <MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>0</MinSpawnMoisture>
 		<MaxSpawnMoisture>4</MaxSpawnMoisture>
+
+		<BaseFeatureProba>0.4</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Rock</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
     </Biome>
 	<Biome>
 		<Type>Taiga</Type>
@@ -88,5 +151,16 @@
 		<MaxSpawnAltitude>&maxAltitude;</MaxSpawnAltitude>
 		<MinSpawnMoisture>5</MinSpawnMoisture>
 		<MaxSpawnMoisture>9</MaxSpawnMoisture>
+		<BaseFeatureProba>0.3</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+
+		<BaseFeatureProba>0.5</BaseFeatureProba>
+		<MaxFeaturesNb>1</MaxFeaturesNb>
+		<PossibleFeatures>
+			<PossibleFeature>
+				<Feature>Forest</Feature>
+				<Rarity>20</Rarity>
+			</PossibleFeature>
+		</PossibleFeatures>
 	</Biome>
 </Biomes>

@@ -7,14 +7,15 @@ namespace Assets.Script
     {
         public enum ModifierEnum
         {
-            //MovementModifierHaveTheTag 1
-            CRIPPLED=1,
-            PLAIN_WALKER=1
+            CRIPPLED,
+            HUMID_EXPERT,
+            DEFAULT,
+
         }
 
         public enum ClassEnum
         {
-            MANATARMS=0,
+            MAN_AT_ARMS=0,
             HORSEMAN=1
         }
     }

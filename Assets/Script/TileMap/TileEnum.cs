@@ -9,7 +9,8 @@ namespace Assets.Script
         public enum FeatureEnum
         {
             FOREST = 0,
-            MOUNTAIN = 1
+            ROCK = 1
+
         }
 
         public enum AltitudeEnum

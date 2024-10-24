@@ -1,3 +1,4 @@
+using Assets.Script.TileMap;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,12 +14,17 @@ namespace Assets.Script
 
         public TileEnum.BiomeEnum type;
         public float movDifficulty;
-        public int minSpawnTemperature;
-        public int maxSpawnTemperature;
-        public int minSpawnAltitude;
-        public int maxSpawnAltitude;
-        public int minSpawnMoisture;
-        public int maxSpawnMoisture;
+        public int minSpawnTemperature { get; private set; }
+        public int maxSpawnTemperature { get; private set; }
+        public int minSpawnAltitude { get; private set; }
+        public int maxSpawnAltitude { get; private set; }
+        public int minSpawnMoisture { get; private set; }
+        public int maxSpawnMoisture { get; private set; }
+
+        private Dictionary<TileEnum.FeatureEnum, int> featuresSpawnProbabilities;
+        private int maxFeatures;
+        private float baseFeatureChance;
+
 
         public BiomeType(TileEnum.BiomeEnum type, float movDifficulty, int minSpawnAltitude, int maxSpawnAltitude, int minSpawnTemperature, int maxSpawnTemperature, int minSpawnMoisture, int maxSpawnMoisture)
         {
@@ -45,6 +51,19 @@ namespace Assets.Script
                 string typeStr = biomeXML.SelectSingleNode("Type")?.InnerText;
                 if (Enum.TryParse<TileEnum.BiomeEnum>(typeStr, true, out TileEnum.BiomeEnum biomeEnum))
                 {
+                    XmlNodeList featuresXML=biomeXML.SelectSingleNode("./PossibleFeatures").SelectNodes("./PossibleFeature");
+                    Dictionary<TileEnum.FeatureEnum, int> newFeaturesSpawnProbabilities=new Dictionary<TileEnum.FeatureEnum, int>();
+                    Debug.Log(featuresXML.Count);
+                    foreach (XmlNode featureXML in featuresXML)
+                    {
+                        if (Enum.TryParse<TileEnum.FeatureEnum>(featureXML.SelectSingleNode("Feature")?.InnerText, true, out TileEnum.FeatureEnum featureEnum)&&
+                            int.TryParse(featureXML.SelectSingleNode("Rarity")?.InnerText,out int rarity))
+                        {
+                            newFeaturesSpawnProbabilities.Add(featureEnum, rarity);
+                        }
+                        else
+                         throw new Exception("Rarity or feature incorrect");
+                    }
                     if (int.TryParse(biomeXML.SelectSingleNode("MinSpawnTemperature")?.InnerText, out int minSpawnTemp) &&
                         int.TryParse(biomeXML.SelectSingleNode("MaxSpawnTemperature")?.InnerText, out int maxSpawnTemp) &&
                         int.TryParse(biomeXML.SelectSingleNode("MinSpawnAltitude")?.InnerText, out int minSpawnAltitude) &&
@@ -75,5 +94,21 @@ namespace Assets.Script
             return biomeTypes[key];
         }
 
+        public List<TileFeatureType> getFeatures(int seed)
+        {
+            double proba = baseFeatureChance;
+            int featureRemaining = maxFeatures;
+            System.Random random = new System.Random(seed);
+            RandomListSelector randomizer = new RandomListSelector(seed);
+            List<TileFeatureType> featuresList=new List<TileFeatureType>();
+            while (random.NextDouble()<proba && maxFeatures>0)
+            {
+                maxFeatures--;
+                TileEnum.FeatureEnum featureEnum=randomizer.SelectWeighted(featuresSpawnProbabilities, item => item.Value).Key;
+                featuresList.Add(TileFeatureType.getType(featureEnum));
+            }
+            return featuresList;
+        }
+ 
     }
 }

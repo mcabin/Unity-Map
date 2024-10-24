@@ -10,7 +10,6 @@ namespace Assets.Script
         private Unit unit;
         private FoundPath currentPath;
         private PathArrow arrow;
-        
 
         public override void Select()
         {

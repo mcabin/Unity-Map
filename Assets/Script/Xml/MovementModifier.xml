@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MovementModifiers>
 	<MovementModifier>
-		<Name>Plain_Walker</Name>
-		<MovementCapacity>1</MovementCapacity>
-		<BiomeCosts>
-			
-			<BiomeCost>
-				<Biome>Plain</Biome>
-				<Cost>0.5</Cost>
-			</BiomeCost>
-			
+		<Name>Default</Name>
+		<MovementCapacity>
+			<Base>0</Base>
+			<Bonus>0</Bonus>
+			<Multiplicator>1</Multiplicator>
+		</MovementCapacity>
+		<BiomeCosts>		
 		</BiomeCosts>
 	</MovementModifier>
 
 	<MovementModifier>
 		<Name>Crippled</Name>
-		<MovementCapacity>0.5</MovementCapacity>
-
+		<MovementCapacity>
+			<Base>0</Base>
+			<Bonus>0</Bonus>
+			<Multiplicator>0.5</Multiplicator>
+		</MovementCapacity>
 		<BiomeCosts>
 			
 		</BiomeCosts>
@@ -24,7 +25,11 @@
 
 	<MovementModifier>
 		<Name>Humid_Expert</Name>
-		<MovementCapacity>1</MovementCapacity>
+		<MovementCapacity>
+			<Base>0</Base>
+			<Bonus>0</Bonus>
+			<Multiplicator>1</Multiplicator>
+		</MovementCapacity>
 		<BiomeCosts>
 			
 			<BiomeCost>
@@ -36,6 +41,30 @@
 				<Biome>Jungle</Biome>
 				<Cost>0.5</Cost>
 			</BiomeCost>
+			
+		</BiomeCosts>
+	</MovementModifier>
+
+	<MovementModifier>
+		<Name>Medium_Armor</Name>
+		<MovementCapacity>
+			<Base>0</Base>
+			<Bonus>0</Bonus>
+			<Multiplicator>0.9</Multiplicator>
+		</MovementCapacity>
+		<BiomeCosts>
+			
+		</BiomeCosts>
+	</MovementModifier>
+	
+	<MovementModifier>
+		<Name>Heavy_Armor</Name>
+		<MovementCapacity>
+			<Base>0</Base>
+			<Bonus>0</Bonus>
+			<Multiplicator>0.6</Multiplicator>
+		</MovementCapacity>
+		<BiomeCosts>
 			
 		</BiomeCosts>
 	</MovementModifier>

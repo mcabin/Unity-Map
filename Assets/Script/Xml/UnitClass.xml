@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UnitClasses>
+	
     <UnitClass>
         <Name>Villager</Name>
-        <Health>10</Health>
-        <Movement>3</Movement>
         <Modifiers>
-            
+            <Modifier>Default</Modifier>
         </Modifiers>
     </UnitClass>
+	
     <UnitClass>
         <Type>Horseman</Type>
-        <Health>15</Health>
-        <Movement>5</Movement>
         <Modifiers>
-            <Modifier>Plain_Walker</Modifier>
-        </Modifiers>
+            <Modifier>Light_Armor</Modifier>
+			<Modifier>Horse</Modifier>
+		</Modifiers>
     </UnitClass>
+
+	<UnitClass>
+		<Type>Man_At_Arms</Type>
+		<Modifiers>
+			<Modifier>Default</Modifier>
+			<Modifier>Heavy_Armor</Modifier>
+		</Modifiers>
+	</UnitClass>
 </UnitClasses>
