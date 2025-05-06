@@ -170,6 +170,7 @@ MonoBehaviour:
   normalSpeed: 1
   fastSpeed: 2
   movementTime: 5
+  zoomSpeed: 1
   newPosition: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &985237469
@@ -367,34 +368,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1231536528}
-  - component: {fileID: 1231536527}
   - component: {fileID: 1231536532}
+  - component: {fileID: 1231536533}
   m_Layer: 0
-  m_Name: Map
+  m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1231536527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231536526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8baa528a62941944bbb1ac7228375876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapWidth: 70
-  mapHeight: 100
-  altitudeScale: 2
-  temperatureModifier: 1
-  moistureModifier: 1
-  seed: 1000
-  pathfinding: {fileID: 1231536532}
 --- !u!4 &1231536528
 Transform:
   m_ObjectHideFlags: 0
@@ -423,6 +405,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822fe2fa27a252c48b1de6280058294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1231536533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231536526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e66772793e6b24aaa604ffb1b25496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapWidth: 100
+  mapHeight: 100
+  altitudeScale: 1
+  temperatureModifier: 2
+  moistureModifier: 2
+  seed: 2324
 --- !u!1 &1920949933
 GameObject:
   m_ObjectHideFlags: 0

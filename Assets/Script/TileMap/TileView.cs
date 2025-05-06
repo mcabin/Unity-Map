@@ -27,7 +27,7 @@ namespace Assets.Script
             this.tile = tile;
             model = Instantiate(MapViewAsset.getTileModel(tile.altitude.elevationType.elev));
             Material material = MapViewAsset.getTileMaterial(tile.biome.type);
-            this.transform.position = MapViewAsset.getTilePosition(tile.coordW, tile.coordH);
+            this.transform.position = MapViewAsset.getTilePosition(tile.coord);
             this.transform.Rotate(0, tile.altitude.elevationType.rotation, 0);
             //Material
             Renderer renderer = model.GetComponent<Renderer>();
@@ -40,7 +40,7 @@ namespace Assets.Script
             //Collider
             createCollider();
             //Name
-            this.name = "Tile " + tile.coordW + ", " + tile.coordH;
+            this.name = "Tile " + tile.coord.x + ", " + tile.coord.x;
         }
 
         

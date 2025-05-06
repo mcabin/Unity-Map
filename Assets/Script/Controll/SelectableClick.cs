@@ -30,7 +30,6 @@ namespace Assets.Script
                     if (obj != null){
                         ObjectSelection.Instance.Select(obj);
                     }
-                    
                 }
                 else
                 {

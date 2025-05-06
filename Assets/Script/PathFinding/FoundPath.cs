@@ -6,47 +6,54 @@ namespace Assets.Script
 {
     public struct SimpleNode
     {
-        public int coordW;
-        public int coordH;
+        public Vector2Int coord;
         public float costFromStart;
         public float cost;
-        public SimpleNode(int coordW, int coordH,int costFromStart, int cost)
+
+        public SimpleNode(Vector2Int coord, float costFromStart, float cost)
         {
-            this.coordW = coordW;
-            this.coordH = coordH;
+            this.coord = coord;
             this.costFromStart = costFromStart;
             this.cost = cost;
         }
     }
-    public class FoundPath 
+
+    public class FoundPath
     {
-        public List<SimpleNode> path;
-        private int _count;
-        public int Count { get { return _count; } }
-        public float finalCost{get;private set;}
-        public FoundPath(List<TileNode> path) {
-            transformTileNodeInSimpleNode(path);
-            _count = path.Count;
+        public List<SimpleNode> path { get; private set; }
+        public int Count => path.Count;
+        public float finalCost { get; private set; }
+
+        public FoundPath(List<TileNode> tileNodes)
+        {
+            path = new List<SimpleNode>();
+            transformTileNodeInSimpleNode(tileNodes);
         }
 
         private void transformTileNodeInSimpleNode(List<TileNode> tileNodes)
         {
-            
-            path=new List<SimpleNode>();
-            if (tileNodes == null)
+            if (tileNodes == null || tileNodes.Count == 0) return;
+
+            float totalCost = 0;
+
+            for (int i = 0; i < tileNodes.Count; i++)
             {
-                return;
+                TileNode tileNode = tileNodes[i];
+                float cost = (i > 0) ? tileNode.gCost - tileNodes[i - 1].gCost : 0;
+
+                SimpleNode newSimpleNode = new SimpleNode(
+                    tileNode.tile.coord,
+                    tileNode.gCost,
+                    cost
+                );
+
+                path.Add(newSimpleNode);
+                totalCost = tileNode.gCost; // Le dernier gCost sera le coût final
             }
-            int totalCost=0;
-            foreach (var tileNode in tileNodes)
-            {
-                int cost = tileNode.gCost - tileNode.cameFrom.gCost;
-                totalCost = tileNode.gCost;
-                SimpleNode newSimpleNode=new SimpleNode(tileNode.tile.coordW,tileNode.tile.coordH,tileNode.gCost,cost);
-            }
+
             finalCost = totalCost;
         }
 
-        public SimpleNode getNode(int index) { return path[index]; }
+        public SimpleNode getNode(int index) => path[index];
     }
 }

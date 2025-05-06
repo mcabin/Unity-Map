@@ -7,82 +7,91 @@ using static Assets.Script.UnitEnum;
 namespace Assets.Script
 {
 
-    public struct UnitData
+    public class UnitData
     {
         private float baseData;
         private float multiplicator;
         private float bonus;
-        public float health { get; private set; }
 
-        private void updateHealth()
+        public float Health => (baseData * multiplicator) + bonus; // Calcul dynamique
+
+        public UnitData()
         {
-            health = (baseData * multiplicator) + bonus;
+            Reset();
         }
-        public void changeBase(float change)
+
+        public void ChangeBase(float change)
         {
             baseData += change;
-            updateHealth();
-        }
-        public void changeMultiplicator(float change)
-        {
-            multiplicator = multiplicator * change;
-            updateHealth();
-        }
-        public void changeBonus(float change)
-        {
-            bonus += change;
-            updateHealth();
         }
 
-        public void reset()
+        public void ChangeMultiplicator(float change)
+        {
+            multiplicator *= change;
+        }
+
+        public void ChangeBonus(float change)
+        {
+            bonus += change;
+        }
+
+        public void Reset()
         {
             baseData = 1.0f;
             multiplicator = 1.0f;
             bonus = 0;
-            updateHealth();
         }
     }
+
     public class Unit
     {
         public UnitData maxHealth { get; private set; }
         public float currentHealth { get; private set; }
         public UnitData movementCapacity { get; private set; }
-        
-        private int coordW, coordH;
+
+        public Vector2Int coord { get; private set; }
 
         public Dictionary<TileEnum.BiomeEnum, float> movementCoastByBiome;
         private HashSet<UnitEnum.ModifierEnum> modifiers;
         private List<UnitClass> unitClasses;
 
-        private void initializeBaseMovementCoast()
+        public Unit(Vector2Int coord, UnitClass baseClass)
         {
-            foreach(TileEnum.BiomeEnum biome in Enum.GetValues(typeof(TileEnum.BiomeEnum)))
-            {
-                movementCoastByBiome.Add(biome, 1);
-            }
-        }
-        public Unit(int coordW,int coordH,UnitClass baseClass)
-        {
-            this.coordW = coordW;
-            this.coordH = coordH;
+            this.coord = coord;
+
+            maxHealth = new UnitData();
+            movementCapacity = new UnitData();
+            movementCoastByBiome = new Dictionary<TileEnum.BiomeEnum, float>();
+            modifiers = new HashSet<UnitEnum.ModifierEnum>();
             unitClasses = new List<UnitClass>();
+
             addClass(baseClass);
             initializeBaseMovementCoast();
-            
         }
 
+        private void initializeBaseMovementCoast()
+        {
+            foreach (TileEnum.BiomeEnum biome in Enum.GetValues(typeof(TileEnum.BiomeEnum)))
+            {
+                movementCoastByBiome[biome] = 1f;
+            }
+        }
+
+        public UnitClass getUnitClass(int index)
+        {
+            return unitClasses[index];
+        }
         private void addClass(UnitClass unitClass)
         {
             unitClasses.Add(unitClass);
-            foreach(UnitEnum.ModifierEnum modifierEnum in unitClass.modifiers)
+            foreach (UnitEnum.ModifierEnum modifierEnum in unitClass.modifiers)
             {
-                addModifier(modifierEnum,false);
+                addModifier(modifierEnum, false);
             }
             applyAllModifiers();
         }
 
-        
-        public void addModifier(UnitEnum.ModifierEnum modifierEnum,bool applyNow=true)
+        public void addModifier(UnitEnum.ModifierEnum modifierEnum, bool applyNow = true)
         {
             modifiers.Add(modifierEnum);
             if (applyNow)
@@ -91,38 +100,32 @@ namespace Assets.Script
             }
         }
 
+        public bool hasModifier(UnitEnum.ModifierEnum modifierEnum)
+        {
+            return modifiers.Contains(modifierEnum);
+        }
+
         private void applyAllModifiers()
         {
             resetAllModifiers();
-            foreach(UnitEnum.ModifierEnum modifierEnum in modifiers)
+            foreach (UnitEnum.ModifierEnum modifierEnum in modifiers)
             {
                 UnitModifier.applyWithKey(this, modifierEnum);
             }
         }
+
         private void resetAllModifiers()
         {
-            maxHealth.reset();
-            movementCapacity.reset();
+            maxHealth.Reset();
+            movementCapacity.Reset();
             initializeBaseMovementCoast();
         }
-
-        private void removeOneModifier(UnitEnum.ModifierEnum modifEnum)
+        public void Move(Vector2Int vector)
         {
-            modifiers.Remove(modifEnum);
-            applyAllModifiers();
-        }
-        public void move(int w, int h)
-        {
-            coordH = h;
-            coordW = w;
+            coord = vector;
         }
 
-        public (int w, int h) getPosition()
-        {
-            return (coordW, coordH);
-        }
-
-        
     }
+
 }
 

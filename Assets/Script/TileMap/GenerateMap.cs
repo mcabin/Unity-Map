@@ -264,7 +264,7 @@ namespace Assets.Script
                     }
 
                     BiomeType biome = retrieveBiomeType(temperatureTab[w, h], altitude, moisture);
-                    Tile newTile = new Tile(biome, w, h, altitudeTab[w, h], biome.getFeatures(seed));
+                    Tile newTile = new Tile(biome, new Vector2Int(w,h), altitudeTab[w, h], biome.getFeatures(seed));
                     if (altitude.isRising)
                     {
                         updateNeighboorsElev(ElevationType.getUnknow(altitude.type), altitudeTab, w, h);
@@ -278,13 +278,13 @@ namespace Assets.Script
                 borderTiles.Sort((p1, p2) => p1.altitude.nbUnknow.CompareTo(p2.altitude.nbUnknow));
                 Tile currentTile = borderTiles[0];
                 borderTiles.RemoveAt(0);
-                int w = currentTile.coordW;
-                int h = currentTile.coordH;
+                int w = currentTile.coord.x;
+                int h = currentTile.coord.y;
                 bool changeNeeded = currentTile.altitude.setTypeWithNeighboor(seed, w, h);
                 //NORTH
                 if (h > 0)
                 {
-                    Tile northTile = map.getTile(w, h - 1);
+                    Tile northTile = map.GetTile(w, h - 1);
                     if (northTile.altitude.level >= currentTile.altitude.level)
                     {
                         northTile.altitude.setNeighborElev(GlobalEnum.Direction.SOUTH, currentTile.altitude.elevationType);
@@ -298,7 +298,7 @@ namespace Assets.Script
                 //WEST
                 if (w > 0)
                 {
-                    Tile westTile = map.getTile(w - 1, h);
+                    Tile westTile = map.GetTile(w - 1, h);
                     if (westTile.altitude.level >= currentTile.altitude.level)
                     {
                         westTile.altitude.setNeighborElev(GlobalEnum.Direction.EAST, currentTile.altitude.elevationType);
@@ -312,7 +312,7 @@ namespace Assets.Script
                 //EAST
                 if (width - 1 > w)
                 {
-                    Tile eastTile = map.getTile(w + 1, h);
+                    Tile eastTile = map.GetTile(w + 1, h);
                     if (eastTile.altitude.level >= currentTile.altitude.level)
                     {
 
@@ -327,7 +327,7 @@ namespace Assets.Script
                 //SOUTH
                 if (h < height - 1)
                 {
-                    Tile southTile = map.getTile(w, h + 1);
+                    Tile southTile = map.GetTile(w, h + 1);
                     if (southTile.altitude.level >= currentTile.altitude.level)
                     {
 
@@ -350,20 +350,20 @@ namespace Assets.Script
             {
                 for (int h = 0; h < height; h++)
                 {
-                    tilesNodes[w, h] = new TileNode(map.getTile(w, h));
+                    tilesNodes[w, h] = new TileNode(map.GetTile(w, h));
                     if (h > 0)
                     {
                         //North self
-                        tilesNodes[w, h].addNeighbor(GlobalEnum.Direction.NORTH, tilesNodes[w, h - 1]);
+                        tilesNodes[w, h].AddNeighbor(GlobalEnum.Direction.NORTH, tilesNodes[w, h - 1]);
                         //South neighboor north
-                        tilesNodes[w, h - 1].addNeighbor(GlobalEnum.Direction.SOUTH, tilesNodes[w, h]);
+                        tilesNodes[w, h - 1].AddNeighbor(GlobalEnum.Direction.SOUTH, tilesNodes[w, h]);
                     }
                     if (w > 0)
                     {
                         //West self
-                        tilesNodes[w, h].addNeighbor(GlobalEnum.Direction.WEST, tilesNodes[w - 1, h]);
+                        tilesNodes[w, h].AddNeighbor(GlobalEnum.Direction.WEST, tilesNodes[w - 1, h]);
                         //East neighboor west
-                        tilesNodes[w - 1, h].addNeighbor(GlobalEnum.Direction.EAST, tilesNodes[w, h]);
+                        tilesNodes[w - 1, h].AddNeighbor(GlobalEnum.Direction.EAST, tilesNodes[w, h]);
                     }
 
                 }

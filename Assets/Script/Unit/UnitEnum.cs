@@ -15,8 +15,9 @@ namespace Assets.Script
 
         public enum ClassEnum
         {
-            MAN_AT_ARMS=0,
-            HORSEMAN=1
+            VILLAGER=0,
+            MAN_AT_ARMS=1,
+            HORSEMAN=2
         }
     }
 }

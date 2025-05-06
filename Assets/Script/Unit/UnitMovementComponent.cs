@@ -55,8 +55,8 @@ namespace Assets.Script
         private void tileIsUpdated()
         {
             TileView tile = TileSelection.Instance.tileSelected;
-            Debug.Log(tile.tile.coordW + " " + tile.tile.coordH);
-            currentPath = PathFinding.Instance.findPath(unit, tile.tile.coordW, tile.tile.coordH);
+            Debug.Log(tile.tile.coord.x + " " + tile.tile.coord.y);
+            currentPath = PathFinding.Instance.FindPath(unit, tile.tile.coord);
             arrow.changePath(currentPath);
         }
     }

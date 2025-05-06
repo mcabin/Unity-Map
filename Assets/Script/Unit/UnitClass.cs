@@ -17,9 +17,22 @@ namespace Assets.Script
             this.modifiers = modifiers;
             this.type = type;
         }
+        public UnitClass()
+        {
+            Initialize();
+        }
+
+        static UnitClass()
+        {
+            Initialize();
+        }
+        public static UnitClass getUnitClass(UnitEnum.ClassEnum enumClass)
+        {
+            return allUnitClasses[enumClass];
+        }
 
         private static Dictionary<UnitEnum.ClassEnum, UnitClass> allUnitClasses;
-        private static void initialize()
+        private static void Initialize()
         {
             XmlDocument xmlDoc = new XmlDocument();
             allUnitClasses = new Dictionary<UnitEnum.ClassEnum, UnitClass>();

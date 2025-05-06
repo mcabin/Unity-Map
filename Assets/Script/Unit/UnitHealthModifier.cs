@@ -20,9 +20,9 @@ namespace Assets.Script
 
         public override void applyModifier(Unit unit)
         {
-            unit.maxHealth.changeMultiplicator(multiplicatorHealth);
-            unit.maxHealth.changeBonus(bonusHealth);
-            unit.maxHealth.changeBase(baseHealth);
+            unit.maxHealth.ChangeMultiplicator(multiplicatorHealth);
+            unit.maxHealth.ChangeBonus(bonusHealth);
+            unit.maxHealth.ChangeBase(baseHealth);
         }
 
         private static void initialize()

@@ -9,7 +9,7 @@ namespace Assests.Script
         public float fastSpeed;
         private float movementSpeed;
         public float movementTime;
-
+        public float zoomSpeed;
 
         public Vector3 newPosition;
         public Quaternion newRotation;
@@ -59,6 +59,11 @@ namespace Assests.Script
             if (Input.GetKey(KeyCode.E))
             {
                 newRotation *= Quaternion.Euler(Vector3.up * movementSpeed);
+            }
+            float scroll = Input.mouseScrollDelta.y;
+            if (scroll != 0f)
+            {
+                newPosition += transform.up * scroll * zoomSpeed;
             }
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * movementTime);

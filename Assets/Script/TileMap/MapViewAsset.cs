@@ -27,9 +27,9 @@ namespace Assets.Script
         }
 
 
-        public static Vector3 getTilePosition(int w, int h, int z = yBaseCoord)
+        public static Vector3 getTilePosition(Vector2Int vec, int z = yBaseCoord)
         {
-            return new Vector3(h * heightTileSize, z, w * widthTileSize);
+            return new Vector3(vec.y * heightTileSize, z, vec.x * widthTileSize);
         }
 
         private static void initializeTileModel()

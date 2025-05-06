@@ -53,7 +53,6 @@ namespace Assets.Script
                 {
                     XmlNodeList featuresXML=biomeXML.SelectSingleNode("./PossibleFeatures").SelectNodes("./PossibleFeature");
                     Dictionary<TileEnum.FeatureEnum, int> newFeaturesSpawnProbabilities=new Dictionary<TileEnum.FeatureEnum, int>();
-                    Debug.Log(featuresXML.Count);
                     foreach (XmlNode featureXML in featuresXML)
                     {
                         if (Enum.TryParse<TileEnum.FeatureEnum>(featureXML.SelectSingleNode("Feature")?.InnerText, true, out TileEnum.FeatureEnum featureEnum)&&

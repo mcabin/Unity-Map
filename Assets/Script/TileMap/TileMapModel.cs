@@ -19,13 +19,22 @@ namespace Assets.Script
         }
 
 
-        public Tile getTile(int w, int h)
+        public Tile GetTile(int w, int h)
         {
             return tiles[w, h];
         }
-        public TileNode getTileNode(int w, int h)
+        public Tile GetTile(Vector2Int vector)
+        {
+            return this.tiles[vector.x, vector.y];
+        }
+        public TileNode GetTileNode(int w, int h)
         {
             return tilesNodes[w, h];
+        }
+
+        public TileNode GetTileNode(Vector2Int vector)
+        {
+            return tilesNodes[vector.x, vector.y];
         }
         public TileNode[,] GetTileNodes()
         {

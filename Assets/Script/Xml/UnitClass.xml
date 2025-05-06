@@ -7,9 +7,8 @@
             <Modifier>Default</Modifier>
         </Modifiers>
     </UnitClass>
-	
     <UnitClass>
-        <Type>Horseman</Type>
+		<Name>Horseman</Name>
         <Modifiers>
             <Modifier>Light_Armor</Modifier>
 			<Modifier>Horse</Modifier>
@@ -17,7 +16,7 @@
     </UnitClass>
 
 	<UnitClass>
-		<Type>Man_At_Arms</Type>
+		<Name>Man_At_Arms</Name>
 		<Modifiers>
 			<Modifier>Default</Modifier>
 			<Modifier>Heavy_Armor</Modifier>

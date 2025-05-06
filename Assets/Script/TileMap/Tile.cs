@@ -12,20 +12,19 @@ namespace Assets.Script {
     {
         public BiomeType biome { get; private set; }
         public List<TileFeatureType> features;
-        public int coordW, coordH;
+        public Vector2Int coord;
         public AltitudeType altitude { get; private set; }
         public Tile()
         {
 
         }
-        public Tile(BiomeType biome, int coordW, int coordH, AltitudeType altitude,List<TileFeatureType> featuresList)
+        public Tile(BiomeType biome, Vector2Int coord, AltitudeType altitude,List<TileFeatureType> featuresList)
         {
 
             //Biome
             this.biome = biome;
 
-            this.coordW = coordW;
-            this.coordH = coordH;
+            this.coord = coord;
 
             this.altitude = altitude;
             this.features = featuresList;

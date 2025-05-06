@@ -33,9 +33,9 @@ namespace Assets.Script
             {
                 unit.movementCoastByBiome[biomeCost.Key] *= biomeCost.Value;
             }
-            unit.movementCapacity.changeMultiplicator(movementCapacityMultiplicator);
-            unit.movementCapacity.changeBase(movementCapacityBase);
-            unit.movementCapacity.changeBonus(movementCapacityBonus);
+            unit.movementCapacity.ChangeMultiplicator(movementCapacityMultiplicator);
+            unit.movementCapacity.ChangeBase(movementCapacityBase);
+            unit.movementCapacity.ChangeBonus(movementCapacityBonus);
 
         }
 
